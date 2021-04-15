@@ -21,8 +21,11 @@ Auth::routes();
 // Client Side
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/categories', 'CategoryController@index')->name('categories');
+Route::get('/categories/{id}', 'CategoryController@detail')->name('categories-detail');
 Route::get('/details/{id}', 'DetailController@index')->name('details');
+Route::post('/details/{id}', 'DetailController@add')->name('details-add');
 Route::get('/cart', 'CartController@index')->name('cart');
+Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
 Route::get('/success', 'CartController@success')->name('success');
 
 // Auth
@@ -48,6 +51,9 @@ Route::prefix('admin')
         ->group(function() {
             Route::get('/', 'DashboardController@index')->name('admin-dashboard');
             Route::resource('category', 'CategoryController');
+            Route::resource('user', 'UserController');
+            Route::resource('product', 'ProductController');
+            Route::resource('product-gallery', 'ProductGalleryController');
         });
        
 
