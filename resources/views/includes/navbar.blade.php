@@ -83,7 +83,6 @@ data-aos="fade-down">
           @else
               <img src="/images/icon-cart-empty.svg" alt="" />
           @endif
-         
         </a>
       </li>
     </ul>

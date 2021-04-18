@@ -57,11 +57,10 @@
               class="list-group-item list-group-item-action {{ (request()->is('admin/user')) ? 'active' : '' }}"
               >Users</a
             >
-            <a
+            {{-- <a
             href="/dashboard-account.html"
             class="list-group-item list-group-item-action"
-            >Sign Out   </a
-          >
+            >Sign Out   </a> --}}
           </div>
         </div>
         <!-- /#sidebar-wrapper -->
@@ -107,10 +106,15 @@
                       alt=""
                       class="rounded-circle mr-2 profile-picture"
                     />
-                    Hi, Angga
+                    Hi, {{Auth::user()->name}}
                   </a>
                   <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="/">Logout</a>
+                    <a class="dropdown-item" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();"">Logout</a>
+          
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                      @csrf
+                    </form>
                   </div>
                 </li>
               </ul>
@@ -118,7 +122,7 @@
               <ul class="navbar-nav d-block d-lg-none mt-3">
                 <li class="nav-item">
                   <a class="nav-link" href="#">
-                    Hi, Angga
+                    Hi, {{Auth::user()->name}}
                   </a>
                 </li>
                 <li class="nav-item">
