@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Cart;
 use Exception;
+use App\Product;
 use Midtrans\Snap;
 use App\Transaction;
 use Midtrans\Config;
@@ -29,7 +30,8 @@ class CheckoutController extends Controller
             'shipping_price' => 0,  
             'total_price' => $request->total_price,
             'transaction_status' => 'PENDING',
-            'code' => $code
+            'code' => $code,
+            'total_order' => $carts->quantity_order
         ]);
 
         foreach ($carts as $cart) {
@@ -43,6 +45,11 @@ class CheckoutController extends Controller
                 'resi' => '',
                 'code' => $trx
             ]);
+                
+            $product = Product::where('id', $cart->products_id)->first();
+            $product->quantity = $product->quantity-$cart->quantity_order;
+            $product->update();
+            
         }
 
         Cart::where('users_id', Auth::user()->id)->delete();

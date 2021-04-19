@@ -19,6 +19,12 @@
                 <li class="breadcrumb-item active" aria-current="page">
                   Product Details
                 </li>
+                @if ($message = Session::get('error'))
+                <div class="alert alert-danger alert-block">
+                  <button type="button" class="close" data-dismiss="alert">×</button>	
+                  <strong>{{ $message }}</strong>
+                </div>
+              @endif
               </ol>
             </nav>
           </div>
@@ -65,20 +71,36 @@
       <section class="store-heading">
         <div class="container">
           <div class="row">
-            <div class="col-lg-8">
+            <div class="col-lg-4">
               <h1>{{$product->name}}</h1>
               <div class="owner">By {{$product->user->store_name}}</div>
-              <div class="price">Rp. {{number_format($product->price)}}</div>
+            
             </div>
-            <div class="col-lg-2" data-aos="zoom-in">
+            <div class="col-md-4">
+              <div class="price">Rp. {{number_format($product->price)}}</div>
+              <div class="" style="color: black">Stok {{number_format($product->quantity)}}</div>
+            </div>
+            <div class="col-lg-8" data-aos="zoom-in">
               @auth
                 <form action="{{route('details-add', $product->id)}}" method="POST" enctype="multipart/form-data">
                   @csrf
-                  <button
-                    class="btn btn-success nav-link px-4 text-white btn-block mb-3"
-                    type="submit">
-                    Add to Cart
-                  </button>
+                  <div class="form-group">
+                    <label for="">Quantity:</label>
+                    <input type="number" name="quantity_order"  class="form-control w-25">
+                  </div>
+                  @if ($product->quantity == 0)
+                    <button
+                      class="btn btn-success nav-link px-4 text-white btn-block mb-3"
+                      type="submit" disabled>
+                      Stok Kosong
+                    </button>
+                  @else
+                    <button
+                      class="btn btn-success nav-link px-4 text-white btn-block mb-3"
+                      type="submit">
+                      Add to Cart
+                    </button>
+                  @endif
                 </form>
               @else
                 <a
@@ -95,6 +117,7 @@
         <div class="container">
           <div class="row">
             <div class="col-12 col-lg-8">
+              <p style="font-size: 25px; font-weight:bold;">Description</p>
               {!!$product->description!!}
             </div>
           </div>

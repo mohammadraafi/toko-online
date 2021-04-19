@@ -58,7 +58,19 @@
                           />
                         </div>
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="quantity">Quantity</label>
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="quantity"
+                            aria-describedby="price"
+                            name="quantity"
+                          />
+                        </div>
+                      </div>
+                      <div class="col-md-6">
                         <div class="form-group">
                           <label for="">Kategori</label>
                           <select name="categories_id" class="form-control">

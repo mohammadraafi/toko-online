@@ -37,7 +37,9 @@
                     <tr>
                       <th scope="col">Image</th>
                       <th scope="col">Name &amp; Seller</th>
+                      <th scope="col">Quantity</th>
                       <th scope="col">Price</th>
+                      <th scope="col">Total Price</th>
                       <th scope="col">Menu</th>
                     </tr>
                   </thead>
@@ -57,8 +59,15 @@
                         <div class="product-title">{{$cart->product->name}}</div>
                         <div class="product-subtitle">by {{ $cart->product->user->store_name }}</div>
                       </td>
+                      <td style="width: 20%;">
+                        <div class="product-title">{{ number_format($cart->quantity_order)}}</div>
+                      </td>
                       <td style="width: 35%;">
                         <div class="product-title">Rp.{{ number_format($cart->product->price)}}</div>
+                        <div class="product-subtitle">Rupiah</div>
+                      </td>
+                      <td style="width: 35%;">
+                        <div class="product-title">Rp.{{ number_format($cart->total_price)}}</div>
                         <div class="product-subtitle">Rupiah</div>
                       </td>
                       <td style="width: 20%;">
@@ -71,7 +80,7 @@
                       </form>
                       </td>
                     </tr>
-                    @php $totalPrice += $cart->product->price @endphp
+                    @php $totalPrice += $cart->total_price @endphp
                     @endforeach
                   </tbody>
                 </table>

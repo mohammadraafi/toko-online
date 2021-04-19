@@ -62,6 +62,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>Quantity</label>
+                                        <input type="number" name="quantity" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>Description Product</label>
                                         <textarea name="description" id="editor"></textarea>
                                     </div>

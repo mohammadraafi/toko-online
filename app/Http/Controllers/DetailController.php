@@ -19,11 +19,22 @@ class DetailController extends Controller
     }
 
     public function add(Request $request, $id)
-    {
+    {   
+        $product = Product::where('id', $id)->first();
+
+        if($request->quantity_order >= $product->quantity)
+        {
+            return redirect()->back()->with(['error' => 'Jumlah Stok Tidak Mencukupi Jumlah Pesan Anda']);
+        }
+
         $data = [
             'products_id' => $id,
-            'users_id' => Auth::user()->id
+            'users_id' => Auth::user()->id,
+            'quantity_order' => $request->quantity_order,
+            'total_price' => $product->price*$request->quantity_order
         ];
+
+       
 
         Cart::create($data);
 

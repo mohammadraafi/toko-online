@@ -10,7 +10,7 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'users_id', 'categories_id', 'price', 'description', 'slug'
+        'name', 'users_id', 'categories_id', 'price', 'description', 'slug', 'quantity'
     ];
 
     protected $hidden = [
@@ -31,5 +31,10 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'categories_id', 'id');
+    }
+
+    public function sizes()
+    {
+        return $this->hasMany(Size::class, 'products_id', 'id');
     }
 }
