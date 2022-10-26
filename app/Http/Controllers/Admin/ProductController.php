@@ -58,6 +58,40 @@ class ProductController extends Controller
         return view('pages.admin.product.index');
     }
 
+
+    public function discount()
+    {   
+        $products = Product::with(['user', 'category'])->get();
+
+        return view('pages.admin.product.discount', [
+            'products' => $products
+        ]);
+    }
+
+    public function add_discount($id)
+    {
+        $product = Product::findOrFail($id);
+        $categories = Category::all();
+
+        return view('pages.admin.product.add-discount', [
+            'product' => $product,
+            'categories' => $categories
+        ]);
+    }
+
+    public function update_discount(Request $request, $id)
+    {
+        // Product::findOrFail($id)->update([
+        //     'discount_price' => $request->discount_price,
+        // ]);
+
+        $data = $request->all();
+        $item = Product::findOrFail($id);
+        $item->update($data);
+
+        return redirect()->route('product-discount.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
@@ -121,6 +155,8 @@ class ProductController extends Controller
             'categories' => $categories
         ]);
     }
+
+    
 
     /**
      * Update the specified resource in storage.

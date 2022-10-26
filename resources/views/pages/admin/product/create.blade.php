@@ -6,9 +6,9 @@
 <div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
     <div class="dashboard-heading">
-        <h2 class="dashboard-title">Product</h2>
+        <h2 class="dashboard-title">Produk</h2>
         <p class="dashboard-subtitle">
-            Create New Product
+           Tambah Produk Baru
         </p>
     </div>
     <div class="dashboard-content">
@@ -28,25 +28,17 @@
                        <form action="{{route('product.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
+                                <input type="text" name="users_id" class="form-control" value="{{Auth::user()->id}}" hidden>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Product Name</label>
+                                        <label>Nama Produk</label>
                                         <input type="text" name="name" class="form-control" required>
                                     </div>
                                 </div>
+                               
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>User Product</label>
-                                        <select name="users_id" id="" class="form-control">
-                                            @foreach ($users as $user)
-                                                <option value="{{$user->id}}">{{$user->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Category Product</label>
+                                        <label>Kategori Produk</label>
                                         <select name="categories_id" id="" class="form-control">
                                             @foreach ($categories as $category)
                                                 <option value="{{$category->id}}">{{$category->name}}</option>
@@ -56,19 +48,19 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Price Product</label>
+                                        <label>Harga Produk</label>
                                         <input type="number" name="price" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Quantity</label>
+                                        <label>Jumlah Produk</label>
                                         <input type="number" name="quantity" class="form-control" required>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Description Product</label>
+                                        <label>Deskripsi Produk</label>
                                         <textarea name="description" id="editor"></textarea>
                                     </div>
                                 </div>
@@ -76,7 +68,7 @@
                             <div class="row">
                                 <div class="col text-right">
                                     <button type="submit" class="btn btn-success px-5">
-                                        Save Now
+                                        Simpan
                                     </button>
                                 </div>
                             </div>

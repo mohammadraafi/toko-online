@@ -13,6 +13,12 @@ return [
     |
     */
 
+    'timezone' => 'Asia/Jakarta',
+    'locale' => 'id',
+    'faker_locale' => 'id_ID',
+
+
+
     'name' => env('APP_NAME', 'Laravel'),
 
     /*
@@ -161,7 +167,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-       
+
 
         /*
          * Package Service Providers...

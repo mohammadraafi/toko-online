@@ -23,7 +23,7 @@ class UserController extends Controller
 
         if(request()->ajax())
         {  
-            $query = User::query();
+            $query = User::where('roles', 'USER');
             return DataTables::of($query)
                 ->addColumn('action', function($item) {
                     return '

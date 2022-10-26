@@ -18,8 +18,6 @@ class CreateTransactionDetailsTable extends Migration
             $table->integer('transactions_id');
             $table->integer('products_id');
             $table->integer('price');
-            $table->string('shipping_status');
-            $table->string('resi');
             $table->string('code');
             $table->timestamps();
         });

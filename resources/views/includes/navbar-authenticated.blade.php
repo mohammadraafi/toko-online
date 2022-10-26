@@ -7,6 +7,7 @@
    <a class="navbar-brand" href="/">
      <img src="/images/logo.svg" alt="" />
    </a>
+   
    <button
      class="navbar-toggler"
      type="button"

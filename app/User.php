@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Models\Address;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -17,7 +18,8 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name', 'email', 'password', 'roles', 'store_name', 'categories_id', 'store_status',
-        'address_one', 'address_two', 'provinces_id', 'regencies_id', 'zip_code', 'country', 'phone_number'
+        'address_one', 'address_two', 'provinces_id', 'regencies_id', 'zip_code', 'country', 'phone_number',
+        'poin'
 
     ];
 
@@ -38,4 +40,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function address()
+    {
+        return $this->hasOne(Address::class, 'users_id', 'id');
+    }
 }

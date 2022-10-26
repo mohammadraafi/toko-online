@@ -16,7 +16,7 @@
           </div>
           <div class="col-lg-5">
             <h2>
-              Belanja kebutuhan utama, <br />
+              Belanja kebutuhan digital <br />
               menjadi lebih mudah
             </h2>
             <form method="POST" action="{{ route('login') }}" class="mt-3">
@@ -45,10 +45,10 @@
                 class="btn btn-success btn-block w-75 mt-4"
                 type="submit"
               >
-                Sign In to My Account
+                Login
               </button>
               <a class="btn btn-signup w-75 mt-2" href="{{route('register')}}">
-                Sign Up
+                Register
               </a>
             </form>
           </div>

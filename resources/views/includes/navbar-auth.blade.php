@@ -22,7 +22,7 @@
               <a class="nav-link" href="{{route('home')}}">Home </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="{{route('categories')}}">Categories</a>
+              <a class="nav-link" href="{{route('categories')}}">Semua Produk</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="#">Rewards</a>

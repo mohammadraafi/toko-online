@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class DeleteResiFieldAtTransactionsTable extends Migration
+class CreatePoinsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,12 @@ class DeleteResiFieldAtTransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::table('transactions', function (Blueprint $table) {
-            $table->dropColumn('resi');
+        Schema::create('poins', function (Blueprint $table) {
+            $table->id();
+            $table->integer('transactions_id');
+            $table->integer('users_id');
+            $table->bigInteger('poin');
+            $table->timestamps();
         });
     }
 
@@ -25,9 +29,6 @@ class DeleteResiFieldAtTransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::table('transactions', function (Blueprint $table) {
-            $table->string('resi');
-            
-        });
+        Schema::dropIfExists('poins');
     }
 }

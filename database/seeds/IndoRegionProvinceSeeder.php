@@ -8,6 +8,7 @@
  */
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 use AzisHapidin\IndoRegion\RawDataGetter;
 
 class IndoRegionProvinceSeeder extends Seeder
