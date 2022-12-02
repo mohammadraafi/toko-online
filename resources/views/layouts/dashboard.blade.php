@@ -21,12 +21,12 @@
             <!-- Sidebar -->
             <div class="border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="/images/dashboard-store-logo.svg" alt="" class="my-4" />
+                    <img src="/images/logos.png" alt="logo" width="100" height="100">  
                 </div>
                 <div class="list-group list-group-flush">
 
                     <a href="{{ route('dashboard-settings-account') }}"
-                        class="list-group-item list-group-item-action {{ request()->is('dashboard/account*') ? 'active' : '' }}">Profile</a>
+                        class="list-group-item list-group-item-action {{ request()->is('alamat-customer*') ? 'active' : '' }}">Profile</a>
                 </div>
             </div>
             <!-- /#sidebar-wrapper -->

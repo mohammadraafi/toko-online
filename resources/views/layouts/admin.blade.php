@@ -21,37 +21,40 @@
     <div class="page-dashboard">
         <div class="d-flex" id="wrapper">
             <!-- Sidebar -->
-            <div class="border-right bg-danger
+            <div class="border-right bg-whitec
         " id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="/images/admin.png" alt="" class="my-4" style="max-width: 150px" />
+                    <img src="/images/logos.png" alt="" class="my-4" style="max-width: 150px" />
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{{ route('admin-dashboard') }}"
-                        class="list-group-item list-group-item-action bg-danger">Laporan Penjualan</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin') ? 'active' : '' }}">Laporan Penjualan</a>
                         
                     <a href="{{ route('product.index') }}"
-                        class="list-group-item list-group-item-action bg-danger {{ request()->is('admin/product') ? 'active' : '' }}">Kelola Data Produk</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/product') ? 'active' : '' }}">Kelola Data Produk</a>
 
                         <a href="{{ route('product-discount.index') }}"
-                        class="list-group-item list-group-item-action bg-danger {{ request()->is('admin/product-discount') ? 'active' : '' }}">Kelola Data Promo</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/product-discount') ? 'active' : '' }}">Kelola Data Promo</a>
 
                     <a href="{{ route('category.index') }}"
-                        class="list-group-item list-group-item-action bg-danger {{ request()->is('admin/category') ? 'active' : '' }}">Kelola Data Kategori</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/category') ? 'active' : '' }}">Kelola Data Kategori</a>
 
                     <a href="{{ route('dashboard-transactions') }}"
-                        class="list-group-item list-group-item-action bg-danger {{ request()->is('admin/dashboard-transactions') ? 'active' : '' }}">Kelola Data Transaksi
+                        class="list-group-item list-group-item-action bg-whiter {{ request()->is('admin/transactions') ? 'active' : '' }}">Kelola Data Transaksi
                     </a>
 
                     <a href="{{ route('review.index') }}"
-                        class="list-group-item list-group-item-action bg-danger {{ request()->is('admin/ulasan-produk') ? 'active' : '' }}">Kelola Data Ulasan Produk
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('ulasan-produk') ? 'active' : '' }}">Kelola Data Ulasan Produk
+                    </a>
+                    <a href="{{ route('complaint.index') }}"
+                         class="list-group-item list-group-item-action bg-white {{ request()->is('complaint') ? 'active' : '' }}">Kelola Data Kepuasan Pelayanan
                     </a>
 
                     <a href="{{ route('user.index') }}"
-                        class="list-group-item list-group-item-action bg-danger {{ request()->is('admin/user') ? 'active' : '' }}">Kelola Data Pelanggan</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/user') ? 'active' : '' }}">Kelola Data Pelanggan</a>
 
                     <a href="{{ route('alamat-toko.index') }}"
-                        class="list-group-item list-group-item-action bg-danger {{ request()->is('admin/alamat') ? 'active' : '' }}">Kelola Data Alamat Toko</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/alamat-toko') ? 'active' : '' }}">Kelola Data Alamat Toko</a>
                     {{-- <a
             href="/dashboard-account.html"
             class="list-group-item list-group-item-action"
@@ -78,7 +81,7 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link" href="#" id="navbarDropdown" role="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="/images/icon-user.png" alt=""
+                                    <img src="/images/profile-user.png" alt=""
                                         class="rounded-circle mr-2 profile-picture" />
                                     Hi, {{ Auth::user()->name }}
                                 </a>

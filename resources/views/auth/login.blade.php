@@ -9,16 +9,17 @@
         <div class="row align-items-center row-login">
           <div class="col-lg-6 text-center">
             <img
-              src="/images/login-placeholder.png"
+              src="/images/login1.jpg"
               alt=""
-              class="w-50 mb-4 mb-lg-none"
+              class=" mb-4 mb-lg-none"
+              width="85%"
             />
           </div>
           <div class="col-lg-5">
             <h2>
-              Belanja kebutuhan digital <br />
-              menjadi lebih mudah
-            </h2>
+              Silahkan Login Akun<br />
+              Anda!
+            </h2> 
             <form method="POST" action="{{ route('login') }}" class="mt-3">
               @csrf
               <div class="form-group">

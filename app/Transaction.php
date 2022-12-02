@@ -8,12 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Transaction extends Model
 {
     protected $fillable = [
-        'users_id',  'shipping_price', 'transaction_status','shipping_status','total_price', 'code', 'quantity_order', 'resi', 'point'
+        'users_id',  'shipping_price', 'transaction_status', 'shipping_status', 'total_price', 'code', 'quantity_order', 'resi', 'point'
     ];
 
-    protected $hidden = [
-
-    ];
+    protected $hidden = [];
 
     public function user()
     {

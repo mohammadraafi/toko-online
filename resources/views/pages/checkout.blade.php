@@ -89,7 +89,7 @@
                                         @else
                                             <div class="form-group">
                                                 <label for="poin">Gunakan Poin</label>
-                                                <input type="number" class="form-control" id="poin" name="point" />
+                                                <input type="number" class="form-control" id="poin" name="poin" />
                                             </div>
                                         @endif
                                         <input type="hidden" name="total_price" value="{{ $alltotal }}">
@@ -185,5 +185,5 @@
     </script>
 
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
-        data-client-key="SB-Mid-client-FQqT2HK31VBoXDWw"></script>
+        data-client-key="SB-Mid-client-huiw2y0TMZMi2pQI"></script>
 @endpush

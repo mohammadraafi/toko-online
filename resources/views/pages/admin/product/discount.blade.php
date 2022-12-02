@@ -31,21 +31,36 @@
                                 </thead>
                                 <tbody>
                                     @forelse ($products as $product)
-                                    <tr>
-                                        <td>{{$product->name}}</td>
-                                        <td>{{$product->category->name}}</td>
-                                        <td>Rp.{{number_format($product->price)}}</td>
-                                        @if (!empty($product->discount_price))
-                                        <td>Rp.{{number_format($product->discount_price)}}</td>
-                                        @else
-                                            <td>Belum ada promo</td>
-                                        @endif
-                                        <td>
-                                            <a href="{{route('product-discount.add', $product->id)}}" class="btn btn-sm btn-primary">Tambah Promo</a>
-                                        </td>
-                                    </tr>
+                                        <tr>
+                                            <td>{{$product->name}}</td>
+                                            <td>{{$product->category->name}}</td>
+                                            <td>Rp.{{number_format($product->price)}}</td>
+                                            @if (!empty($product->discount_price))
+                                            <td>Rp.{{number_format($product->discount_price)}}</td>
+                                            
+                                            @else
+                                                <td>Belum ada promo</td>
+                                            @endif
+                                            <td>
+                                                @if (!empty($product->discount_price))
+                                                    <form action="{{route('product-discount.destroy', $product->id)}}" method="POST" class="d-inline">
+                                                        @csrf
+                                                        <button class="btn btn-success btn-sm mb-2">
+                                                        <i class="fa fa-check"></i>Hapus Promo
+                                                        </button>
+                                                    </form>
+                                                    <a href="{{route('product-discount.edit', $product->id)}}" class="btn btn-sm btn-primary mb-2">Update Promo</a>
+                                                @else
+                                                <a href="{{route('product-discount.add', $product->id)}}" class="btn btn-sm btn-primary">Tambah Promo</a>
+                                                @endif
+
+                                                   
+                                            </td>
+                                        </tr>
                                     @empty
-                                        
+                                    <tr>
+                                        <td colspan="7" class="text-center">Tidak Ada Produk</td>
+                                    </tr>
                                     @endforelse
                                    
                                 </tbody>

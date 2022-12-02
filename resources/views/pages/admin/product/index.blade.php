@@ -35,6 +35,42 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($products as $product)
+                                    <tr>
+                                       
+                                        <td>{{$product->name}}</td>
+                                        <td>{{$product->category->name}}</td>
+                                        <td>{{$product->price}}</td>
+                                        <td>
+                                            <div class= "btn-group">
+                                                <div class= "dropdown">
+                                                    <button class="btn btn-primay dropdown-toggle mr-1 mb-1" 
+                                                        type="button"
+                                                        data-toggle="dropdown">
+                                                        Aksi
+                                                    </button>
+                                                    <div class="dropdown-menu">
+                                                        <a class="dropdown-item" href="{{route('product.edit', $product->id)}}">
+                                                            Edit
+                                                        </a>
+                                                        <form action="{{route('product.destroy', $product->id)}}" method="POST">
+                                                            @method('delete')
+                                                            @csrf
+                                                            <button type="submit" class="dropdown-item text-danger">
+                                                                Hapus
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        @empty
+                                        <tr>
+                                            <td colspan="7" class="text-center">Tidak Ada Produk</td>
+                                        </tr>
+                                       
+                                    </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                         </div>
@@ -46,7 +82,7 @@
 </div>
 @endsection
 
-@push('addon-script')
+{{-- @push('addon-script')
     <script>
         $(document).ready(function() {
         var datatable = $('#crudTable').DataTable({
@@ -77,4 +113,4 @@
         });
         });
     </script>
-@endpush
+@endpush --}}

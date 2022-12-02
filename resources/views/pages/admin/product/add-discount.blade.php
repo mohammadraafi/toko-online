@@ -25,7 +25,7 @@
                 @endif
                 <div class="card">
                     <div class="card-body">
-                       <form action="{{route('product-discount.update', $product->id)}}" method="POST" enctype="multipart/form-data">
+                       <form action="{{route('product-discount.store', $product->id)}}" method="POST" enctype="multipart/form-data">
                         @method('PUT')
                             @csrf
                             <div class="row">
@@ -38,7 +38,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Nama Promo</label>
+                                        <label>Harga Promo</label>
                                         <input type="number" name="discount_price" class="form-control" required>
                                     </div>
                                 </div>

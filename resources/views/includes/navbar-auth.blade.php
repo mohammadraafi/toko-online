@@ -3,7 +3,7 @@
       data-aos="fade-down">
       <div class="container">
         <a class="navbar-brand" href="{{route('home')}}">
-          <img src="/images/logo.svg" alt="" />
+          <img src="/images/logos.png" alt="logo" width="75" height="75">  
         </a>
         <button
           class="navbar-toggler"
@@ -24,9 +24,9 @@
             <li class="nav-item">
               <a class="nav-link" href="{{route('categories')}}">Semua Produk</a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
               <a class="nav-link" href="#">Rewards</a>
-            </li>
+            </li> --}}
           </ul>
         </div>
       </div>

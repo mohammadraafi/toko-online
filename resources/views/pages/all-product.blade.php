@@ -77,7 +77,7 @@
                         </div>
                     @empty
                         <div class="col-12 text-center">
-                            No Products Found
+                            Belum ada produk    
                         </div>
                     @endforelse
                 </div>

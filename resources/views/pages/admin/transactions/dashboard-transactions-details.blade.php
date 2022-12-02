@@ -103,6 +103,13 @@
 
                                     </div>
                                 </div>
+                                <div class="col-12 col-md-6">
+                                    <div class="product-title">Resi Pengiriman</div>
+                                    <div class="product-subtitle">
+                                        {{ $transactionDetail->transaction->resi}}
+
+                                    </div>
+                                </div>
                                 {{-- <div class="col-12 col-md-6">
                                     <div class="product-title">Kode Pos</div>
                                     <div class="product-subtitle">{{ $transactionDetail->transaction->user->zip_code }}

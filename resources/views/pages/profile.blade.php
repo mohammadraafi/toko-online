@@ -21,41 +21,72 @@
                                 @csrf
                                 <div class="card">
                                     <div class="card-body">
-                                        <div class="row mb-2">
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="name">Nama Lengkap</label>
-                                                    <input type="text" class="form-control" id="name"
-                                                        aria-describedby="emailHelp" name="name"
-                                                        value="{{ $user->name }}" />
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label for="phone_number">Nomor Telepon</label>
-                                                    <input type="text" class="form-control" id="phone_number"
-                                                        name="phone_number" value="{{ $user->phone_number }}" />
-                                                </div>
-                                            </div>
-                                        </div>
                                         <div class="row">
+                                            <div class="col-3 mt-1">
+                                                @if (Auth::user()->photo)
+                                                <img src="{{ asset(Auth::user()->photo) }}" alt="" width="85%" height="70%" class="mb-1 mt-2">
+                                               <br>
+                                                <button type="button" class="btn btn-primary mb-5 mt-2" data-toggle="modal" data-target="#updateFoto-{{Auth::user()->id}}">
+                                                    Ubah Foto Profile
+                                                </button>
+                                                @else
+                                                <h5 class="card-title">Foto profile belum di tambahkan</h5>
+                                                <button type="button" class="btn btn-primary mt-1 mb-2" data-toggle="modal" data-target="#updateFoto-{{Auth::user()->id}}">
+                                                    Ubah Foto Profile
+                                                </button>
+                                                @endif
+                                            </div>
+                                            <div class="row">
+                                                <div class="col">
+                                                    @auth
+                                                    @php
+                                                        $poin = \App\User::where('id', Auth::user()->id)->sum('poin');
+                                                    @endphp
+                                                    <h5 class="mt-1 mb-3">Poin : Rp.{{ number_format($poin) }}</h5>
+                                                @endauth
+                                                        <div class="form-group">
+                                                           <label for="name">Nama Lengkap</label>
+                                                            <input type="text" class="form-control" id="name"
+                                                                aria-describedby="emailHelp" name="name"
+                                                                value="{{ $user->name }}" />
+                                                        </div>
+
+                                                        <div class="form-group">
+                                                            <label for="phone_number">Nomor Telepon</label>
+                                                            <input type="text" class="form-control" id="phone_number"
+                                                                name="phone_number" value="{{ $user->phone_number }}" />
+                                                        </div>
+                                                        <button type="submit" class="btn btn-success mt-2  px-">
+                                                            Update Profile
+                                                        </button>
+                                            </div>
+
+                                            </div>
+                                            
+                                        </div>
+                                        {{-- <div class="row">
                                             <div class="col text-right">
                                                 <button type="submit" class="btn btn-success px-5">
                                                     Update Profile
                                                 </button>
                                             </div>
-                                        </div>
+                                        </div> --}}
+                                        {{-- @auth
+                                        @php
+                                            $poin = \App\User::where('id', Auth::user()->id)->sum('poin');
+                                        @endphp
+                                        <h5 class="mt-2">Poin : Rp.{{ number_format($poin) }}</h5>
+                                    @endauth --}}
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <div class="card mt-5">
+                    {{-- <div class="card mt-5">
                         <div class="col-12">
                             @if (Auth::user()->photo)
-                            <div class="card">
-                                <img src="{{ asset(Auth::user()->photo) }}" alt="" width="20%" class="mb-2 mt-2 rounded-circle" >
-                            </div>
+                            <img src="{{ asset(Auth::user()->photo) }}" alt="" width="20%" class="mb-2 mt-2" >
+                           <br>
                             <button type="button" class="btn btn-primary mt-5 mb-5" data-toggle="modal" data-target="#updateFoto-{{Auth::user()->id}}">
                                 Ubah Foto Profile
                             </button>
@@ -69,10 +100,10 @@
                         </div>
                        
 
-                    </div>
+                    </div> --}}
                 </div>
 
-                <div class="card mt-5 mb-5">
+                <div class="card mt-3 mb-5">
                     <div class="card-header">
                         Alamat
                     </div>

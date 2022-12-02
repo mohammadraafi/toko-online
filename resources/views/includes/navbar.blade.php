@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top navbar-fixed-top" data-aos="fade-down">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/images/logo.svg" alt="" />
+            <img src="/images/logos.png" alt="logo" width="75" height="75">  
         </a>
         @auth
             @php
                 $poin = \App\User::where('id', Auth::user()->id)->sum('poin');
             @endphp
-            <h5 class="mt-2">Poin : Rp.{{ number_format($poin) }}</h5>
+            <h5 class="mt-2 ml-5">Poin : Rp.{{ number_format($poin) }}</h5>
         @endauth
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -23,6 +23,9 @@
                     <a class="nav-link" href="{{ route('categories') }}">Semua Produk</a>
                 </li>
                 @auth
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('complaint-customer.index') }}">Penilaian Pelayanan</a>
+                </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('history-transaction.index') }}">Transaksi</a>
                     </li>
@@ -30,10 +33,10 @@
 
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">Sign Up</a>
+                        <a class="nav-link" href="{{ route('register') }}">Register</a>
                     </li>
                     <li class="nav-item">
-                        <a class="btn btn-success nav-link px-4 text-white" href="{{ route('login') }}">Sign In</a>
+                        <a class="btn btn-success nav-link px-4 text-white" href="{{ route('login') }}">Login</a>
                     </li>
                 @endguest
             </ul>
@@ -52,7 +55,7 @@
                             {{-- <a class="dropdown-item" href="{{ route('alamat-customer.index') }}">Alamat</a> --}}
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();"">Logout</a>
+                                onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                 @csrf

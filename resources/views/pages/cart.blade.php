@@ -104,7 +104,7 @@
                         </a>
                         @else
                         <a href="{{route('dashboard-settings-account')}}"  class="btn btn-success btn-block">
-                            Tambahkan Alamat Terlebih dahulu
+                            Tambahkan alamat terlebih dahulu
                         </a>
                         @endif
                        

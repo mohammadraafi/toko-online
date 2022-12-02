@@ -28,6 +28,35 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @forelse ($photos as $photo)
+                                    <tr>
+                                        <td>{{$photo->product->name}}</td>
+                                        <td>
+                                            <img src="{{ Storage::url($photo->photos) }}"  width="50" height="50" class="rounded-square">
+                                        </td>
+                                        <td> <div class= "btn-group">
+                                            <div class= "dropdown">
+                                                <button class="btn btn-primay dropdown-toggle mr-1 mb-1" 
+                                                    type="button"
+                                                    data-toggle="dropdown">
+                                                    Aksi
+                                                </button>
+                                                <div class="dropdown-menu">
+                                                    <form action="{{route('product-gallery.destroy', $photo->id)}}" method="POST">
+                                                      @method('delete')
+                                                      @csrf
+                                                        <button type="submit" class="dropdown-item text-danger">
+                                                            Hapus
+                                                        </button>
+                                                    </from>
+                                                </div>
+                                            </div>
+                                        </div></td>
+                                    </tr>
+                                    @empty
+                                        <h2>Belum ada foto</h2>
+                                    @endforelse
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -39,7 +68,7 @@
 </div>
 @endsection
 
-@push('addon-script')
+{{-- @push('addon-script')
     <script>
         $(document).ready(function() {
         var datatable = $('#crudTable').DataTable({
@@ -69,4 +98,4 @@
         });
         });
     </script>
-@endpush
+@endpush --}}

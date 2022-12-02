@@ -44,11 +44,11 @@ Route::group(['middleware' => ['auth']], function () {
 
     // Alamat customer
     // Route::get('/alamat-customer', 'AlamatController@index')->name('alamat-customer.index');
-    Route::get('/alamat-customer/create','AlamatController@create')->name('alamat-customer.create');
-    Route::get('/getcity/{id}','AlamatController@getCity')->name('alamat-customer.getCity');
+    Route::get('/alamat-customer/create', 'AlamatController@create')->name('alamat-customer.create');
+    Route::get('/getcity/{id}', 'AlamatController@getCity')->name('alamat-customer.getCity');
     Route::post('/simpan-alamat-customer', 'AlamatController@store')->name('alamat-customer.store');
-    Route::get('/alamat/edit/{id}','AlamatController@edit')->name('alamat-customer.edit');
-    Route::post('/alamat/update/{id}','AlamatController@update')->name('alamat-customer.update');
+    Route::get('/alamat/edit/{id}', 'AlamatController@edit')->name('alamat-customer.edit');
+    Route::post('/alamat/update/{id}', 'AlamatController@update')->name('alamat-customer.update');
 
     Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
 
@@ -75,7 +75,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::get('/dashboard/settings', 'DashboardSettingController@store')->name('dashboard-settings-store');
     Route::get('/alamat-customer', 'DashboardSettingController@account')->name('dashboard-settings-account');
-    Route::get('/getcity/{id}','DashboardSettingController@getCity')->name('dashboard-settings.getCity');
+    Route::get('/getcity/{id}', 'DashboardSettingController@getCity')->name('dashboard-settings.getCity');
     Route::post('/dashboard/account/{redirect}', 'DashboardSettingController@update')->name('dashboard-settings-redirect');
     Route::post('/dashboard/account', 'DashboardSettingController@updatePhoto')->name('dashboard-settings-photo');
 
@@ -83,6 +83,16 @@ Route::group(['middleware' => ['auth']], function () {
     // review
     Route::get('/ulasan-produk', 'ReviewController@index')->name('review.index');
     Route::post('/review-post', 'ReviewController@store')->name('review.store');
+
+    // Complaint
+    Route::get('/complaint', 'Admin\ComplaintController@index')->name('complaint.index');
+    Route::get('/complaint-customer', 'Admin\ComplaintController@customer')->name('complaint-customer.index');
+    Route::get('/complaint-create', 'Admin\ComplaintController@create')->name('complaint.create');
+    Route::post('/complaint-post', 'Admin\ComplaintController@store')->name('complaint.store');
+    Route::get('/detail-penilaian/{id}',  'Admin\ComplaintController@show')->name('complaint.show');
+
+    // Response
+
 });
 
 
@@ -99,18 +109,26 @@ Route::prefix('admin')
         // Discount
         Route::get('/product-discount', 'ProductController@discount')->name('product-discount.index');
         Route::get('/add-discount/{id}', 'ProductController@add_discount')->name('product-discount.add');
+        Route::put('/store-discount/{id}', 'ProductController@store_discount')->name('product-discount.store');
+        Route::post('/destroy-discount/{id}', 'ProductController@destroy_discount')->name('product-discount.destroy');
+        Route::get('/edit-discount/{id}', 'ProductController@edit_discount')->name('product-discount.edit');
         Route::put('/update-discount/{id}', 'ProductController@update_discount')->name('product-discount.update');
+
 
         // Alamat
         Route::get('/alamat-toko', 'AlamatTokoController@index')->name('alamat-toko.index');
-        Route::get('/getcity/{id}','AlamatTokoController@getCity')->name('alamat-toko.getCity');
+        Route::get('/getcity/{id}', 'AlamatTokoController@getCity')->name('alamat-toko.getCity');
         Route::post('/simpan-alamat-toko', 'AlamatTokoController@store')->name('alamat-toko.store');
-        Route::get('/alamat-toko/edit/{id}','AlamatTokoController@edit')->name('alamat-toko.edit');
-        Route::post('/alamat-toko/update/{id}','AlamatTokoController@update')->name('alamat-toko.update');
+        Route::get('/alamat-toko/edit/{id}', 'AlamatTokoController@edit')->name('alamat-toko.edit');
+        Route::post('/alamat-toko/update/{id}', 'AlamatTokoController@update')->name('alamat-toko.update');
 
 
         // Transaksi
         Route::get('/transactions', 'DashboardTransactionController@index')->name('dashboard-transactions');
         Route::get('/transactions/{id}', 'DashboardTransactionController@details')->name('dashboard-transaction-details');
         Route::post('/transactions/{id}', 'DashboardTransactionController@update')->name('dashboard-transaction-update');
+
+
+        Route::post('/respnses-post', 'ResponsesController@store')->name('responses.store');
+        Route::get('/respnses-add/{id}', 'ResponsesController@show')->name('responses.add');
     });

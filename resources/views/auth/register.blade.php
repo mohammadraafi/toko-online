@@ -8,9 +8,8 @@
                 <div class="row justify-content-center">
                     <div class="col-lg-4">
                         <h2>
-                            Memulai untuk jual beli <br />
-                            dengan cara terbaru
-                        </h2>
+                            Silahkan Daftar Akun Anda! <br />
+                        </h2> 
                         <form method="POST" action="{{ route('register') }}" class="mt-3">
                             @csrf
                             <div class="form-group">
@@ -164,8 +163,8 @@
             },
             data() {
                 return {
-                    name: "Angga Hazza Sett",
-                    email: "kamujagoan@bwa.id",
+                    // name: "Angga Hazza Sett",
+                    // email: "kamujagoan@bwa.id",
                     is_store_open: true,
                     store_name: "", 
                     email_unavailable: false

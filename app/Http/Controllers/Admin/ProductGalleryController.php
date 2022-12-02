@@ -15,39 +15,11 @@ class ProductGalleryController extends Controller
     public function index()
     {
 
-        if(request()->ajax())
-        {  
-            $query = ProductGallery::with(['product']);
-            return DataTables::of($query)
-                ->addColumn('action', function($item) {
-                    return '
-                        <div class= "btn-group">
-                            <div class= "dropdown">
-                                <button class="btn btn-primay dropdown-toggle mr-1 mb-1" 
-                                    type="button"
-                                    data-toggle="dropdown">
-                                    Aksi
-                                </button>
-                                <div class="dropdown-menu">
-                                    <form action="'. route('product-gallery.destroy', $item->id) .'" method="POST">
-                                        '. method_field('delete') . csrf_field().'
-                                        <button type="submit" class="dropdown-item text-danger">
-                                            Hapus
-                                        </button>
-                                    </from>
-                                </div>
-                            </div>
-                        </div>
-                    ';
-                })
-                ->editColumn('photos', function($item) {
-                    return $item->photos ? '<img src = "'. Storage::url($item->photos).'" style= "max-height: 80px;" />' : '';
-                })
-                ->rawColumns(['action', 'photos']) 
-                ->make();
-        }
+        $photos = ProductGallery::with(['product'])->get();
 
-        return view('pages.admin.product-gallery.index');
+        return view('pages.admin.product-gallery.index', [
+            'photos' => $photos
+        ]);
     }
 
     /**
@@ -56,8 +28,8 @@ class ProductGalleryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
-     
+    {
+
         $products = Product::all();
 
         return view('pages.admin.product-gallery.create', [
@@ -80,7 +52,6 @@ class ProductGalleryController extends Controller
         ProductGallery::create($data);
 
         return redirect()->route('product-gallery.index');
-        
     }
 
     /**
@@ -102,7 +73,7 @@ class ProductGalleryController extends Controller
      */
     public function edit($id)
     {
-    //    
+        //    
     }
 
     /**
@@ -114,7 +85,7 @@ class ProductGalleryController extends Controller
      */
     public function update(Request $request, $id)
     {
-    //    
+        //    
     }
 
     /**

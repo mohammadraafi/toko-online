@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\User;
 use App\Product;
-Use App\Category;
+use App\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -21,46 +21,17 @@ class ProductController extends Controller
      */
     public function index()
     {
-       
 
-        if(request()->ajax())
-        {  
-            $query = Product::with(['user','category']);
-            return DataTables::of($query)
-                ->addColumn('action', function($item) {
-                    return '
-                        <div class= "btn-group">
-                            <div class= "dropdown">
-                                <button class="btn btn-primay dropdown-toggle mr-1 mb-1" 
-                                    type="button"
-                                    data-toggle="dropdown">
-                                    Aksi
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="'.route('product.edit', $item->id).'">
-                                        Edit
-                                    </a>
-                                    <form action="'. route('product.destroy', $item->id) .'" method="POST">
-                                        '. method_field('delete') . csrf_field().'
-                                        <button type="submit" class="dropdown-item text-danger">
-                                            Hapus
-                                        </button>
-                                    </from>
-                                </div>
-                            </div>
-                        </div>
-                    ';
-                })
-                ->rawColumns(['action']) 
-                ->make();
-        }
+        $products = Product::with(['category', 'user'])->get();
 
-        return view('pages.admin.product.index');
+        return view('pages.admin.product.index', [
+            'products' => $products
+        ]);
     }
 
 
     public function discount()
-    {   
+    {
         $products = Product::with(['user', 'category'])->get();
 
         return view('pages.admin.product.discount', [
@@ -79,7 +50,9 @@ class ProductController extends Controller
         ]);
     }
 
-    public function update_discount(Request $request, $id)
+
+
+    public function store_discount(Request $request, $id)
     {
         // Product::findOrFail($id)->update([
         //     'discount_price' => $request->discount_price,
@@ -92,13 +65,50 @@ class ProductController extends Controller
         return redirect()->route('product-discount.index');
     }
 
+
+    public function edit_discount($id)
+    {
+        $item = Product::findOrFail($id);
+        $categories = Category::all();
+
+        return view('pages.admin.product.edit-discount', [
+            'item' => $item,
+            'categories' => $categories
+        ]);
+    }
+
+    public function update_discount(ProductRequest $request, $id)
+    {
+        $request->validate([
+            'discount_price' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $item = Product::findOrFail($id);
+
+
+        $item->update($data);
+
+        return redirect()->route('product-discount.index');
+    }
+
+    public function destroy_discount($id)
+    {
+        Product::findOrFail($id)->update([
+            'discount_price' => null
+        ]);
+
+        return redirect()->route('product-discount.index');
+    }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {   
+    {
         $users = User::all();
         $categories = Category::all();
 
@@ -123,7 +133,6 @@ class ProductController extends Controller
         Product::create($data);
 
         return redirect()->route('product.index');
-        
     }
 
     /**
@@ -150,13 +159,13 @@ class ProductController extends Controller
         $categories = Category::all();
 
         return view('pages.admin.product.edit', [
-            'item'=> $item,
+            'item' => $item,
             'users' => $users,
             'categories' => $categories
         ]);
     }
 
-    
+
 
     /**
      * Update the specified resource in storage.

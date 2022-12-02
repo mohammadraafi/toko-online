@@ -17,55 +17,55 @@ use RealRashid\SweetAlert\Facades\Alert;
 use Kavist\RajaOngkir\Facades\RajaOngkir;
 
 class CheckoutController extends Controller
-{   
+{
     public function index()
     {
         $carts = Cart::with(['product.galleries', 'user'])->where('users_id', Auth::user()->id)->get();
 
 
-         //lalu hitung jumlah berat total dari semua produk yang akan di beli
-         $berattotal = 0;
-         foreach($carts as $cart){
-             $berat = $cart->product->weight * $cart->quantity_order;
-             $berattotal = $berattotal + $berat;    
-         }
-         
-         //lalu ambil id kota si pelanngan
-         $city = DB::table('addresses')->where('users_id', Auth::user()->id)->get();
-         $city_destination =  $city[0]->city_id;
+        //lalu hitung jumlah berat total dari semua produk yang akan di beli
+        $berattotal = 0;
+        foreach ($carts as $cart) {
+            $berat = $cart->product->weight * $cart->quantity_order;
+            $berattotal = $berattotal + $berat;
+        }
 
-         //ambil id kota toko
-         $alamat_toko = DB::table('store_addresses')->first();
-         
+        //lalu ambil id kota si pelanngan
+        $city = DB::table('addresses')->where('users_id', Auth::user()->id)->get();
+        $city_destination =  $city[0]->city_id;
 
-         //lalu hitung ongkirnya
-         $cost = RajaOngkir::ongkosKirim([
-             'origin'  => $alamat_toko->id,
-             'destination' => $city_destination,
-             'weight' => $berattotal,
-             'courier' => 'jne'
-         ])->get();
-         // dd($cost);
+        //ambil id kota toko
+        $alamat_toko = DB::table('store_addresses')->first();
 
-         //ambil hasil nya
-         $ongkir =  $cost[0]['costs'][0]['cost'][0]['value'];
 
-          //lalu ambil alamat user untuk ditampilkan di view
+        //lalu hitung ongkirnya
+        $cost = RajaOngkir::ongkosKirim([
+            'origin'  => $alamat_toko->id,
+            'destination' => $city_destination,
+            'weight' => $berattotal,
+            'courier' => 'jne'
+        ])->get();
+        // dd($cost);
+
+        //ambil hasil nya
+        $ongkir =  $cost[0]['costs'][0]['cost'][0]['value'];
+
+        //lalu ambil alamat user untuk ditampilkan di view
         $alamat_user = DB::table('addresses')
-        ->join('cities','cities.city_id','=','addresses.city_id')
-        ->join('provinces','provinces.province_id','=','cities.province_id')
-        ->select('addresses.*','cities.title as kota','provinces.title as prov')
-        ->where('addresses.users_id',Auth::user()->id)
-        ->first();    
-        
+            ->join('cities', 'cities.city_id', '=', 'addresses.city_id')
+            ->join('provinces', 'provinces.province_id', '=', 'cities.province_id')
+            ->select('addresses.*', 'cities.title as kota', 'provinces.title as prov')
+            ->where('addresses.users_id', Auth::user()->id)
+            ->first();
+
         //buat kode invoice sesuai tanggalbulantahun dan jam
         $data = [
-            'invoice' => 'ALV'.Date('Ymdhi'),
+            'invoice' => 'ALV' . Date('Ymdhi'),
             'keranjangs' => $carts,
             'ongkir' => $ongkir,
             'alamat' => $alamat_user
         ];
-        return view('pages.checkout',$data);
+        return view('pages.checkout', $data);
     }
 
 
@@ -108,7 +108,7 @@ class CheckoutController extends Controller
                 'resi' => '',
                 'quantity_order' => $sumQuantity,
                 'code' => $code,
-                'point' => $request->point
+                'poin' => $request->poin
             ]);
 
 

@@ -87,6 +87,7 @@
                                     <th scope="col">Kode Transaksi</th>
                                     <th scope="col">Status Transaksi</th>
                                     <th scope="col">Total Order</th>
+                                    <th scope="col">Resi Pengiriman</th>
                                     <th scope="col">Total Harga</th>
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Menu</th>
@@ -101,8 +102,11 @@
                                         <td style="width: 20%;">
                                             <div class="product-title">{{ $dikirim->transaction_status }}</div>
                                         </td>
-                                        <td style="width: 20%;">
+                                        <td style="width: 10%;">
                                             <div class="product-title">{{ $dikirim->quantity_order }}</div>
+                                        </td>
+                                        <td style="width: 20%;">
+                                            <div class="product-title">{{ $dikirim->resi }}</div>
                                         </td>
                                         <td style="width: 20%;">
                                             <div class="product-title">Rp.{{ number_format($dikirim->total_price) }}</div>
@@ -126,7 +130,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="7" class="text-center">Tidak Ada transaction</td>
+                                        <td colspan="7" class="text-center">Tidak Ada transaksi</td>
                                     </tr>
                                 @endforelse
                             </tbody>
@@ -148,6 +152,7 @@
                                     <th scope="col">Kode Transaksi</th>
                                     <th scope="col">Status Transaksi</th>
                                     <th scope="col">Total Order</th>
+                                    <th scope="col">Resi Pengiriman</th>
                                     <th scope="col">Total Harga</th>
                                     <th scope="col">Tanggal</th>
                                     <th scope="col">Menu</th>

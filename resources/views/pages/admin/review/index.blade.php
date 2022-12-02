@@ -39,7 +39,9 @@
                                         <td>{{$review->comment}}</td>
                                     </tr>
                                     @empty
-                                        
+                                    <tr>
+                                        <td colspan="7" class="text-center">Tidak Ada Produk</td>
+                                    </tr>
                                     @endforelse
                                     
                                 </tbody>

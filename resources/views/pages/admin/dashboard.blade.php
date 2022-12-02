@@ -95,6 +95,6 @@
     chart.draw(view, options);
 }
 </script>
-<div id="columnchart_values" style="width: 900px; height: 300px;"></div>
+<div id="columnchart_values" style="width: 900px; height: 100px; margin-left:30px;"></div>
 @endsection
 
