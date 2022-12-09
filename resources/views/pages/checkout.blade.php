@@ -13,14 +13,13 @@
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Checkout
                                 </li>
-
                             </ol>
                         </nav>
                     </div>
                 </div>
             </div>
         </section>
-
+        
         <div class="site-section">
             <div class="container">
                 <div class="row">
@@ -89,7 +88,7 @@
                                         @else
                                             <div class="form-group">
                                                 <label for="poin">Gunakan Poin</label>
-                                                <input type="number" class="form-control" id="poin" name="poin" />
+                                                <input type="number" class="form-control" id="poin" name="point" />
                                             </div>
                                         @endif
                                         <input type="hidden" name="total_price" value="{{ $alltotal }}">

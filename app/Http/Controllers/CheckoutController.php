@@ -111,7 +111,6 @@ class CheckoutController extends Controller
                 'poin' => $request->poin
             ]);
 
-
             $sumPoin = User::where('id', Auth::user()->id)->first();
             $sumPoin->poin = $sumPoin->poin - $request->point;
             $sumPoin->update();

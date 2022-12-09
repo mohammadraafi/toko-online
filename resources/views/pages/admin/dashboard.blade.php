@@ -54,13 +54,17 @@
     </div>
 </div>
 
-<div class="section-content section-dashboard-home mt-5" data-aos="fade-up">
-    <div class="container-fluid">
-        <div class="dashboard-heading">
-            <h2 class="dashboard-title">Grafik Status Penjualan</h2>
+    
+        <div class="section-content section-dashboard-home mt-5" data-aos="fade-up">
+            <div class="container-fluid">
+                <div class="dashboard-heading">
+                    <h2 class="dashboard-title">Grafik Status Penjualan</h2>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
+       
+
+
 
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
@@ -96,5 +100,12 @@
 }
 </script>
 <div id="columnchart_values" style="width: 900px; height: 100px; margin-left:30px;"></div>
+
+
+
+
+
+
+
 @endsection
 

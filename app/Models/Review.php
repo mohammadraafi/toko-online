@@ -12,7 +12,7 @@ class Review extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['users_id','transaction_detail_id', 'products_id', 'rating', 'comment'];
+    protected $fillable = ['users_id', 'transaction_detail_id', 'products_id', 'rating', 'comment'];
 
     public function transaction_detail()
     {

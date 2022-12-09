@@ -38,7 +38,7 @@
                                         <th>Tanggal</th>
                                         <th>Status</th>
                                         <th>Keterangan</th>
-                                        {{-- <th>Aksi</th> --}}
+                                        <th>Tanggapan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,6 +47,7 @@
                                             <td>{{ $complaint->created_at->format('d F Y - H:i:s') }}</td>
                                             <td>{{$complaint->status}}</td>
                                             <td>{{ $complaint->complaint}}</td>
+                                            <td>{{$complaint->response->responses}}</td>
 
                                             <td></td>
                                         </tr>

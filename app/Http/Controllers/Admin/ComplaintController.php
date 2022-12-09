@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Complaint;
+use App\Models\Review;
 use App\Models\Responses;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -20,9 +21,19 @@ class ComplaintController extends Controller
     public function index()
     {
         $complaints = Complaint::with(['user'])->orderBy('created_at', 'desc')->get();
+        $satu = Complaint::where('rating', '1/5')->count();
+        $dua = Complaint::where('rating', '2/5')->count();
+        $tiga = Complaint::where('rating', '3/5')->count();
+        $empat = Complaint::where('rating', '4/5')->count();
+        $lima = Complaint::where('rating', '5/5')->count();
 
         return view('pages.admin.complaint.index', [
-            'complaints' => $complaints
+            'complaints' => $complaints,
+            'satu' => $satu,
+            'dua' => $dua,
+            'tiga' => $tiga,
+            'empat' => $empat,
+            'lima' => $lima
         ]);
     }
 
@@ -82,7 +93,7 @@ class ComplaintController extends Controller
             'user'
         ])->findOrFail($id);
 
-        $responsess = Responses::where('pengaduan_id', $id)->orderBy('created_at', 'DESC')->get();
+        $responsess = Responses::where('complaint_id', $id)->orderBy('created_at', 'DESC')->get();
 
         return view('pages.admin.complaint.detail', [
             'pengaduans' => $complaints,

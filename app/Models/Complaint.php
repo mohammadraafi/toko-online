@@ -25,6 +25,6 @@ class Complaint extends Model
 
     public function response()
     {
-        return $this->hasOne(Responses::class);
+        return $this->hasOne(Responses::class,  'complaints_id', 'id');
     }
 }
