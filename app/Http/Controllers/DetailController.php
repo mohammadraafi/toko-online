@@ -18,7 +18,7 @@ class DetailController extends Controller
         $reviews = Review::with(['product', 'user'])->where('products_id', $id)->get();
 
 
-        
+
         return view('pages.detail', [
             'product' => $product,
             'review' => $review,
@@ -27,7 +27,7 @@ class DetailController extends Controller
     }
 
     public function add(Request $request, $id)
-    {   
+    {
         $product = Product::where('id', $id)->first();
         if (!empty($product->discount_price)) {
             $data = [
@@ -44,11 +44,10 @@ class DetailController extends Controller
                 'total_price' => $product->price*$request->quantity_order
             ];
         }
-       
 
         Cart::create($data);
 
         return redirect()->route('cart');
-        
+
     }
 }

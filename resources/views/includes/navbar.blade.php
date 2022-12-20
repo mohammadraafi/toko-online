@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-light navbar-store fixed-top navbar-fixed-top" data-aos="fade-down">
     <div class="container">
         <a class="navbar-brand" href="/">
-            <img src="/images/logos.png" alt="logo" width="75" height="75">  
+            <img src="/images/logos.png" alt="logo" width="75" height="75">
         </a>
         @auth
             @php
@@ -23,9 +23,9 @@
                     <a class="nav-link" href="{{ route('categories') }}">Semua Produk</a>
                 </li>
                 @auth
-                <li class="nav-item">
-                    <a class="nav-link" href="{{ route('complaint-customer.index') }}">Penilaian Pelayanan</a>
-                </li>
+                {{-- <li class="nav-item">
+                    <a class="nav-link" href="{{ route('kritik-customer.index') }}">Kritik & Saran</a>
+                </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('history-transaction.index') }}">Transaksi</a>
                     </li>

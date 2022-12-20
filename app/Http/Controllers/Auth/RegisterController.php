@@ -45,7 +45,7 @@ class RegisterController extends Controller
 
 
     public function showRegistrationForm()
-    {   
+    {
         $categories = Category::all();
 
         return view('auth.register', [
@@ -60,15 +60,22 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            // 'store_name' => ['nullable', 'string', 'min:8'],
-            // 'categories_id' => ['nullable', 'integer', 'exists:categories,id'],
-            // 'is_store_open' => ['required',],
+        return Validator::make(
+            $data,
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'username' => ['required', 'string', 'max:255'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ],
 
-        ]);
+            [
+                'name.required' => 'Nama tidak boleh kosong',
+                'email.required' => 'Email tidak boleh kosong',
+                'username.required' => 'Username tidak boleh kosong',
+                'password.required' => 'Password tidak boleh kosong'
+            ]
+        );
     }
 
     /**
@@ -82,6 +89,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'username' => $data['username'],
             'password' => Hash::make($data['password']),
             // 'store_name' => isset($data['store_name']) ? $data['store_name'] : '',
             // 'categories_id' => isset($data['categories_id']) ? $data['categories_id'] : NULL,

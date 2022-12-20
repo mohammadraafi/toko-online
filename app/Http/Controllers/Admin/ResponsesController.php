@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Kritik;
 use App\Models\Complaint;
 use App\Models\Responses;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
@@ -40,21 +41,20 @@ class ResponsesController extends Controller
      */
     public function store(Request $request)
     {
-        DB::table('complaints')->where('id', $request->complaints_id)->update([
-            'status' => 'Sudah diproses',
+        DB::table('kritiks')->where('id', $request->kritiks_id)->update([
+            'status' => 'Sudah direspon',
         ]);
-
 
         $data = $request->all();
 
-        $data['complaints_id'] = $request->complaints_id;
+        $data['kritiks_id'] = $request->kritiks_id;
         $data['users_id'] = Auth::user()->id;
 
-
-        Alert::success('Berhasil', 'Penilaian berhasil ditanggapi');
-
         Responses::create($data);
-        return redirect()->route('complaint.index');
+
+        Alert::success('Berhasil', 'Kritik & Saran berhasil ditanggapi');
+
+        return redirect()->route('kritik.index');
     }
 
     /**
@@ -65,10 +65,10 @@ class ResponsesController extends Controller
      */
     public function show($id)
     {
-        $complaint = Complaint::findOrFail($id);
+        $kritik = Kritik::findOrFail($id);
 
         return view('pages.admin.complaint.add-tanggapan', [
-            'complaint' => $complaint
+            'kritik' => $kritik
         ]);
     }
 

@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Complaint;
+use App\Models\Kritik;
 use App\Models\Review;
 use App\Models\Responses;
 use Illuminate\Http\Request;
@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
-class ComplaintController extends Controller
+class KritikController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,20 +20,20 @@ class ComplaintController extends Controller
      */
     public function index()
     {
-        $complaints = Complaint::with(['user'])->orderBy('created_at', 'desc')->get();
-        $satu = Complaint::where('rating', '1/5')->count();
-        $dua = Complaint::where('rating', '2/5')->count();
-        $tiga = Complaint::where('rating', '3/5')->count();
-        $empat = Complaint::where('rating', '4/5')->count();
-        $lima = Complaint::where('rating', '5/5')->count();
+        $kritiks = Kritik::with(['user'])->orderBy('created_at', 'desc')->get();
+        // $satu = Kritik::where('rating', '1/5')->count();
+        // $dua = Kritik::where('rating', '2/5')->count();
+        // $tiga = Kritik::where('rating', '3/5')->count();
+        // $empat = Kritik::where('rating', '4/5')->count();
+        // $lima = Kritik::where('rating', '5/5')->count();
 
         return view('pages.admin.complaint.index', [
-            'complaints' => $complaints,
-            'satu' => $satu,
-            'dua' => $dua,
-            'tiga' => $tiga,
-            'empat' => $empat,
-            'lima' => $lima
+            'kritiks' => $kritiks,
+            // 'satu' => $satu,
+            // 'dua' => $dua,
+            // 'tiga' => $tiga,
+            // 'empat' => $empat,
+            // 'lima' => $lima
         ]);
     }
 
@@ -42,10 +42,10 @@ class ComplaintController extends Controller
 
     public function customer()
     {
-        $complaints = Complaint::with(['user'])->where('id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $kritiks = Kritik::where('users_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
 
         return view('pages.complaint.index', [
-            'complaints' => $complaints
+            'kritiks' => $kritiks
         ]);
     }
 
@@ -71,14 +71,15 @@ class ComplaintController extends Controller
         $status = 'Belum direspon';
 
         $data = $request->all();
+
         $data['users_id'] = $id;
         $data['status'] = $status;
 
-        Alert::success('Berhasil', 'Penilaian terkirim');
+        Kritik::create($data);
 
-        Complaint::create($data);
+        Alert::success('Berhasil', 'Kritik & Saran terkirim');
 
-        return redirect()->route('home');
+        return redirect()->route('kritik-customer.index');
     }
 
     /**
@@ -89,14 +90,14 @@ class ComplaintController extends Controller
      */
     public function show($id)
     {
-        $complaints = Complaint::with([
+        $Kritiks = Kritik::with([
             'user'
         ])->findOrFail($id);
 
-        $responsess = Responses::where('complaint_id', $id)->orderBy('created_at', 'DESC')->get();
+        $responsess = Responses::where('Kritik_id', $id)->orderBy('created_at', 'DESC')->get();
 
-        return view('pages.admin.complaint.detail', [
-            'pengaduans' => $complaints,
+        return view('pages.admin.Kritik.detail', [
+            'pengaduans' => $Kritiks,
             'responsess' => $responsess,
 
         ]);

@@ -60,7 +60,7 @@
                         <div class="col-md-4">
                             <div class="price">
                                 @if (!empty($product->discount_price))
-                                    Rp.{{ number_format($product->discount_price) }} 
+                                    Rp.{{ number_format($product->discount_price) }}
                                     <s>Rp.{{ number_format($product->price) }} </s>
                                 @else
                                     Rp.{{ number_format($product->price) }}
@@ -90,7 +90,7 @@
                                 </form>
                             @else
                                 <a class="btn btn-success nav-link px-4 text-white btn-block mb-3"
-                                    href="{{ route('login') }}">Sign In to Add</a>
+                                    href="{{ route('login') }}">Silahkan Login terlebih dahulu</a>
                             @endauth
 
                         </div>
@@ -120,21 +120,22 @@
                                 @forelse ($reviews as $review)
                                     <li class="media">
                                         <div class="media-body">
+                                            <img
+                                            src="{{$review->user->photo}}"
+                                            class="mr-3"
+                                            alt=""
+                                          />
                                             <h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
                                             <h5 class="mt-2 mb-1">{{ $review->rating }}</h5>
-                                            {{ $review->comment }}
+                                           <p> {{ $review->comment }}</p>
                                         </div>
                                     </li>
                                     <hr>
                                 @empty
-                                    <h5>Belum ada komentar</h5>
+                                    <h5>Belum ada ulasan</h5>
                                 @endforelse
                                 {{-- <li class="media my-4">
-                  <img
-                    src="/images/icon-testimonial-2.png"
-                    class="mr-3 rounded-circle"
-                    alt=""
-                  />
+
                   <div class="media-body">
                     <h5 class="mt-2 mb-1">Anna Sukkirata</h5>
                     Color is great with the minimalist concept. Even I thought

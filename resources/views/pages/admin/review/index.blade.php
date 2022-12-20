@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Ulasan Produk')
-    
+
 @section('content')
 <div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
@@ -43,7 +43,7 @@
                                         <td colspan="7" class="text-center">Tidak Ada Produk</td>
                                     </tr>
                                     @endforelse
-                                    
+
                                 </tbody>
                             </table>
                         </div>
@@ -69,11 +69,11 @@
     function drawStuff() {
       var data = new google.visualization.arrayToDataTable([
         ['Move', 'Jumlah'],
-        ["1/5", {{$satu}}],
-        ["2/5", {{$dua}}],
-        ["3/5", {{$tiga}}],
-        ["4/5", {{$empat}}],
-        ['5/5', {{$lima}}]
+        ["Buruk", {{$satu}}],
+        ["Kurang Baik", {{$dua}}],
+        ["Cukup Baik", {{$tiga}}],
+        ["Baik", {{$empat}}],
+        ['Sangat Baik', {{$lima}}]
       ]);
       var options = {
         width: 800,

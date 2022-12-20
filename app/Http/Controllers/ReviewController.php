@@ -12,11 +12,11 @@ class ReviewController extends Controller
     public function index()
     {
         $reviews = Review::with(['transaction_detail', 'product', 'user'])->get();
-        $satu = Review::where('rating', '1/5')->count();
-        $dua = Review::where('rating', '2/5')->count();
-        $tiga = Review::where('rating', '3/5')->count();
-        $empat = Review::where('rating', '4/5')->count();
-        $lima = Review::where('rating', '5/5')->count();
+        $satu = Review::where('rating', 'Buruk')->count();
+        $dua = Review::where('rating', 'Kurang Baik')->count();
+        $tiga = Review::where('rating', 'Cukup Baik')->count();
+        $empat = Review::where('rating', 'Baik')->count();
+        $lima = Review::where('rating', 'Sangat Baik')->count();
 
         return view('pages.admin.review.index', [
             'reviews' => $reviews,

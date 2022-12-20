@@ -1,12 +1,12 @@
 @extends('layouts.admin')
 
-@section('title', 'Penilaian')
-    
+@section('title', 'Kritik & Saran')
+
 @section('content')
-<div class="section-content section-dashboard-home">
+<div class="section-content section-dashboard-home mt-5">
     <div class="container-fluid">
     <div class="dashboard-heading">
-        <h2 class="dashboard-title">Penilaian Kepuasan Pelayanan</h2>
+        <h2 class="dashboard-title">Kritik & Saran</h2>
     </div>
     <div class="dashboard-content">
         <div class="row">
@@ -19,29 +19,29 @@
                                     <tr>
                                         <th>No</th>
                                         <th>Nama</th>
-                                        <th>Keterangan</th>
-                                        <th>Rating</th>
+                                        <th>Kritik</th>
+                                        <th>Saran</th>
                                         <th>Status</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($complaints as $complaint)
+                                    @forelse ($kritiks as $kritik)
                                     <tr>
                                         <td>{{$loop->iteration}}</td>
-                                        <td>{{$complaint->user->name}}</td>
-                                        <td>{{$complaint->complaint}}</td>
-                                        <td>{{$complaint->rating}}</td>
-                                        <td>{{$complaint->status}}</td>
+                                        <td>{{$kritik->user->name}}</td>
+                                        <td>{{$kritik->kritik}}</td>
+                                        <td>{{$kritik->saran}}</td>
+                                        <td>{{$kritik->status}}</td>
                                         <td>
-                                            @if ($complaint->status == 'Belum direspon')
-                                            <a href="{{route('responses.add', $complaint->id)}}"
+                                            @if ($kritik->status == 'Belum direspon')
+                                            <a href="{{route('responses.add', $kritik->id)}}"
                                                 class="btn btn-primary btn-sm active mb-5">Berikan tanggapan</a>
                                             @endif
                                         </td>
                                         @empty
                                         <tr>
-                                            <td colspan="7" class="text-center">Tidak Ada Produk</td>
+                                            <td colspan="7" class="text-center">Tidak Ada Kritik & Saran</td>
                                         </tr>
                                     </tr>
                                     @endforelse
@@ -55,12 +55,12 @@
     </div>
 </div>
 
-<div class="modal fade" id="responses-{{ $complaint->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+{{-- <div class="modal fade" id="responses-{{ $kritik->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
     aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Berikan Tanggapan kepada {{ $complaint->user->name }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Berikan Tanggapan kepada {{ $kritik->user->name }}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -69,7 +69,7 @@
                 <form action="{{ route('responses.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="row">
-                        <input type="hidden" name="complaints_id" value="{{ $complaint->id }} ">
+                        <input type="hidden" name="kritiks_id" value="{{ $kritik->id }} ">
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label>Tanggapan</label>
@@ -86,17 +86,17 @@
 
         </div>
     </div>
-</div>
+</div> --}}
 
-<div class="section-content section-dashboard-home mt-5" data-aos="fade-up" >
+{{-- <div class="section-content section-dashboard-home mt-5" data-aos="fade-up" >
     <div class="container-fluid">
         <div class="dashboard-heading">
             <h2 class="dashboard-title">Grafik Kepuasan Pelayanan</h2>
         </div>
     </div>
-</div>
+</div> --}}
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+{{-- <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
   <script type="text/javascript">
     google.charts.load('current', {'packages':['bar']});
     google.charts.setOnLoadCallback(drawStuff);
@@ -127,10 +127,6 @@
       chart.draw(data, google.charts.Bar.convertOptions(options));
     };
   </script>
-  <div id="top_x_div" style="width: 800px; height: 600px; margin-left:30px; margin-bottom:100px; margin-top:40px;"></div>
-
-
- 
-
+  <div id="top_x_div" style="width: 800px; height: 600px; margin-left:30px; margin-bottom:100px; margin-top:40px;"></div> --}}
 
 @endsection

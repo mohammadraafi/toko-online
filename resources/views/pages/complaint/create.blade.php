@@ -24,36 +24,28 @@
         <section class="store-cart">
             <div class="container">
                 <h1>
-                    Berikan penilaian anda disini!
+                    Berikan Kritik & Saran anda disini!!
                 </h1>
                 <div class="card" style="background-color : black">
                     <div class="card-body">
-                        <form action="{{ route('complaint.store') }}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('kritik.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
+                            {{-- <input type="text" name="users_id" class="form-control" hidden value="{{Auth::user()->id}}"> --}}
                             <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <label style="color: white">Keterangan</label>
-                                        <textarea name="complaint" cols="10" rows="5" class="form-control"></textarea>
+                                        <label style="color: white">Kritik</label>
+                                        <textarea name="kritik" cols="10" rows="5" class="form-control"></textarea>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-12 mb-3">
                                     <div class="form-group">
-                                        <div class="form-group">
-                                            <label style="color: white">Rating</label>
-                                            <select name="rating" id="" class="form-control">
-                                                <option value="1/5">1/5</option>
-                                                <option value="2/5">2/5</option>
-                                                <option value="3/5">3/5</option>
-                                                <option value="4/5">4/5</option>
-                                                <option value="5/5">5/5</option>
-                                            </select>
-                                        </div>
+                                        <label style="color: white">Saran</label>
+                                        <textarea name="saran" cols="10" rows="5" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
+
                             <div class="row">
                                 <div class="col text-right">
                                     <button type="submit" class="btn px-5"
@@ -90,13 +82,13 @@
                             Tambahkan alamat terlebih dahulu
                         </a>
                         @endif
-                       
+
                     </div>
                 </div> --}}
 
 
-                
-                
+
+
 
                 {{-- <div class="row" data-aos="fade-up" data-aos-delay="150">
                     <div class="col-12">

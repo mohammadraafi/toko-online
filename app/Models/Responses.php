@@ -10,10 +10,7 @@ class Responses extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['users_id', 'complaints_id', 'responses',];
+    protected $fillable = ['users_id', 'kritiks_id', 'responses',];
 
-    public function complaint()
-    {
-        return $this->hasOne(Complaint::class, 'id', 'id');
-    }
+
 }

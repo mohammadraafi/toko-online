@@ -87,7 +87,6 @@ class ProductController extends Controller
 
         $item = Product::findOrFail($id);
 
-
         $item->update($data);
 
         return redirect()->route('product-discount.index');

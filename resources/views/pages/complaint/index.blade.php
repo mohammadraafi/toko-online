@@ -3,8 +3,9 @@
 @section('title', 'Store Cart')
 
 @section('content')
-    <!-- Page Content -->
-    <div class="page-content page-cart">
+@auth
+     <!-- Page Content -->
+     <div class="page-content page-cart">
         <section class="store-breadcrumbs" data-aos="fade-down" data-aos-delay="100">
             <div class="container">
                 <div class="row">
@@ -13,7 +14,7 @@
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/">Home</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Beri Penilaian
+                                    Kritik & Saran
                                 </li>
                             </ol>
                         </nav>
@@ -28,7 +29,7 @@
                 </h1> --}}
                 <div class="card">
                     <div class="card-body">
-                        <a href="{{ route('complaint.create') }}" class="btn btn-primary mb-3">Berikan Penilaian</a>
+                        <a href="{{ route('kritik.create') }}" class="btn btn-primary mb-3">Berikan Kritik & Saran</a>
                         <div>
                             <table
                                 class="table table-hover scroll-horizontal-vertical w-100 table-bordered table-striped"
@@ -36,24 +37,26 @@
                                 <thead>
                                     <tr>
                                         <th>Tanggal</th>
-                                        <th>Status</th>
-                                        <th>Keterangan</th>
+                                        <th>Kritik</th>
+                                        <th>Saran</th>
                                         <th>Tanggapan</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse ($complaints as $complaint)
+                                    @forelse ($kritiks as $kritik)
                                         <tr>
-                                            <td>{{ $complaint->created_at->format('d F Y - H:i:s') }}</td>
-                                            <td>{{$complaint->status}}</td>
-                                            <td>{{ $complaint->complaint}}</td>
-                                            <td>{{$complaint->response->responses}}</td>
-
-                                            <td></td>
+                                            <td>{{ $kritik->created_at->format('d F Y - H:i:s') }}</td>
+                                            <td>{{$kritik->kritik}}</td>
+                                            <td>{{ $kritik->saran}}</td>
+                                            @if (empty($kritik->tanggapan->responses))
+                                                <td>Belum ada tanggapan</td>
+                                            @else
+                                            <td>{{$kritik->tanggapan->responses}}</td>
+                                            @endif
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="7" class="text-center">Tidak Ada complaint</td>
+                                            <td colspan="7" class="text-center">Tidak Ada kritik</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
@@ -64,6 +67,9 @@
             </div>
         </section>
     </div>
+@endauth
+
+
 @endsection
 
 @push('addon-script')

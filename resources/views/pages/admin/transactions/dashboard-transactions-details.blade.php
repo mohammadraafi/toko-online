@@ -168,11 +168,11 @@
                                     <input class="form-control" type="text" name="resi" id="openStoreTrue"
                                         v-model="resi" />
                                 </div>
-                                <div class="col-md-5">
+                                {{-- <div class="col-md-5">
                                     <button type="submit" class="btn btn-success btn-block mt-4">
                                         Update Resi
                                     </button>
-                                </div>
+                                </div> --}}
                             </template>
                         </div>
                         <div class="modal-footer mt-2">
@@ -181,7 +181,7 @@
                         </div>
                     </form>
                 </div>
-               
+
             </div>
         </div>
     </div>

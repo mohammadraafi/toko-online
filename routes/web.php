@@ -33,13 +33,18 @@ Route::get('/success', 'CartController@success')->name('success');
 
 // Auth
 Route::get('/register/success', 'Auth\RegisterController@success')->name('register-success');
+Route::post('login', 'Auth\LoginController@login')->name('login.store');
 
 
 
 Route::group(['middleware' => ['auth']], function () {
+    // Keranjang
     Route::get('/cart', 'CartController@index')->name('cart');
+    Route::put('/cart-update/{id}', 'CartController@update')->name('cart-update');
     Route::post('/cart', 'CartController@submit');
     Route::get('/province/{id}/cities', 'CartController@getCities');
+    Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
+
 
 
     // Alamat customer
@@ -49,8 +54,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/simpan-alamat-customer', 'AlamatController@store')->name('alamat-customer.store');
     Route::get('/alamat/edit/{id}', 'AlamatController@edit')->name('alamat-customer.edit');
     Route::post('/alamat/update/{id}', 'AlamatController@update')->name('alamat-customer.update');
-
-    Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
 
     Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
     Route::post('/checkout-store', 'CheckoutController@process')->name('checkout');
@@ -84,17 +87,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/ulasan-produk', 'ReviewController@index')->name('review.index');
     Route::post('/review-post', 'ReviewController@store')->name('review.store');
 
-    // Complaint
-    Route::get('/complaint', 'Admin\ComplaintController@index')->name('complaint.index');
-    Route::get('/complaint-customer', 'Admin\ComplaintController@customer')->name('complaint-customer.index');
-    Route::get('/complaint-create', 'Admin\ComplaintController@create')->name('complaint.create');
-    Route::post('/complaint-post', 'Admin\ComplaintController@store')->name('complaint.store');
-    Route::get('/detail-penilaian/{id}',  'Admin\ComplaintController@show')->name('complaint.show');
+    // kritik
+
+    Route::get('/kritik-customer', 'Admin\KritikController@customer')->name('kritik-customer.index');
+    Route::get('/kritik-create', 'Admin\KritikController@create')->name('kritik.create');
+    Route::post('/kritik-post', 'Admin\KritikController@store')->name('kritik.store');
+    Route::get('/detail-penilaian/{id}',  'Admin\KritikController@show')->name('kritik.show');
 
     // Response
 
 });
-
 
 Route::prefix('admin')
     ->namespace('Admin')
@@ -114,7 +116,6 @@ Route::prefix('admin')
         Route::get('/edit-discount/{id}', 'ProductController@edit_discount')->name('product-discount.edit');
         Route::put('/update-discount/{id}', 'ProductController@update_discount')->name('product-discount.update');
 
-
         // Alamat
         Route::get('/alamat-toko', 'AlamatTokoController@index')->name('alamat-toko.index');
         Route::get('/getcity/{id}', 'AlamatTokoController@getCity')->name('alamat-toko.getCity');
@@ -122,13 +123,15 @@ Route::prefix('admin')
         Route::get('/alamat-toko/edit/{id}', 'AlamatTokoController@edit')->name('alamat-toko.edit');
         Route::post('/alamat-toko/update/{id}', 'AlamatTokoController@update')->name('alamat-toko.update');
 
-
         // Transaksi
         Route::get('/transactions', 'DashboardTransactionController@index')->name('dashboard-transactions');
         Route::get('/transactions/{id}', 'DashboardTransactionController@details')->name('dashboard-transaction-details');
         Route::post('/transactions/{id}', 'DashboardTransactionController@update')->name('dashboard-transaction-update');
 
-
+        // Tanggapan
         Route::post('/respnses-post', 'ResponsesController@store')->name('responses.store');
         Route::get('/respnses-add/{id}', 'ResponsesController@show')->name('responses.add');
+
+        // Kritik
+        Route::get('/kritik', 'KritikController@index')->name('kritik.index');
     });

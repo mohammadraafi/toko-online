@@ -85,7 +85,7 @@
         </section>
     </div>
 
-    
+
     <!-- Modal -->
     @foreach ($transactionDetails as $data)
         <div class="modal fade" id="modal-{{ $data->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
@@ -110,11 +110,11 @@
                                     <div class="form-group">
                                         <label>Rating</label>
                                         <select name="rating" id="" class="form-control">
-                                            <option value="1/5">1/5</option>
-                                            <option value="2/5">2/5</option>
-                                            <option value="3/5">3/5</option>
-                                            <option value="4/5">4/5</option>
-                                            <option value="5/5">5/5</option>
+                                            <option value="Buruk">Buruk</option>
+                                            <option value="Kurang Baik">Kurang Baik</option>
+                                            <option value="Cukup Baik">Cukup Baik</option>
+                                            <option value="Baik">Baik</option>
+                                            <option value="Sangat Baik">Sangat Baik</option>
                                         </select>
                                     </div>
                                 </div>

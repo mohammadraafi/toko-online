@@ -16,14 +16,14 @@
                             <li>{{$error}}</li>
                         @endforeach
                     </ul>
-                </div>   
+                </div>
             @endif
                 <div class="card">
                     <div class="card-body">
                        <form action="{{route('responses.store')}}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <input type="hidden" name="complaints_id" value="{{ $complaint->id }} ">
+                                <input type="hidden" name="kritiks_id" value="{{ $kritik->id }} ">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Tanggapan</label>

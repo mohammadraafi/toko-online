@@ -29,7 +29,7 @@
                 <div class="list-group list-group-flush">
                     <a href="{{ route('admin-dashboard') }}"
                         class="list-group-item list-group-item-action bg-white {{ request()->is('admin') ? 'active' : '' }}">Laporan Penjualan</a>
-                        
+
                     <a href="{{ route('product.index') }}"
                         class="list-group-item list-group-item-action bg-white {{ request()->is('admin/product') ? 'active' : '' }}">Kelola Data Produk</a>
 
@@ -46,8 +46,8 @@
                     <a href="{{ route('review.index') }}"
                         class="list-group-item list-group-item-action bg-white {{ request()->is('ulasan-produk') ? 'active' : '' }}">Kelola Data Ulasan Produk
                     </a>
-                    <a href="{{ route('complaint.index') }}"
-                         class="list-group-item list-group-item-action bg-white {{ request()->is('complaint') ? 'active' : '' }}">Kelola Data Kepuasan Pelayanan
+                    <a href="{{ route('kritik.index') }}"
+                         class="list-group-item list-group-item-action bg-white {{ request()->is('complaint') ? 'active' : '' }}">Kelola Data Kritik & Saran
                     </a>
 
                     <a href="{{ route('user.index') }}"

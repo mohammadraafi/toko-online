@@ -49,16 +49,40 @@
                                         <td style="width: 35%;">
                                             <div class="product-title">{{ $cart->product->name }}</div>
                                         </td>
-                                        <td style="width: 20%;">
-                                            <div class="product-title">{{ number_format($cart->quantity_order) }}</div>
+                                        {{-- <form action="{{ route('cart-update', $cart->id) }}" method="POST"
+                                            enctype="multipart/form-data">
+                                            @method('PUT')
+                                            @csrf
+                                            <td class="cart-product-quantity" width="15%">
+                                                <div class="input-group quantity">
+                                                    <div class="input-group-prepend decrement-btn" style="cursor: pointer">
+                                                        <span class="input-group-text">-</span>
+                                                    </div>
+                                                    <input type="text" class="qty-input form-control" maxlength="2"
+                                                        max="10" value="{{ $cart->quantity_order }}"
+                                                        name="quantity_order">
+                                                    <div class="input-group-append increment-btn" style="cursor: pointer">
+                                                        <span class="input-group-text">+</span>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <div class="col-2 col-md-3 form-group">
+                                                <button class="btn btn-success" type="submit">
+                                                    Update Keranjang
+                                                </button>
+                                            </div>
+                                        </form> --}}
+                                        <td style="width: 10%;">
+                                            <div class="product-title">{{ $cart->quantity_order }}</div>
                                         </td>
+
                                         <td style="width: 35%;">
                                             <div class="product-title">
                                                 @if (!empty($cart->product->discount_price))
-                                                Rp.{{ number_format($cart->product->discount_price) }} 
-                                            @else
-                                               Rp.{{ number_format($cart->product->price) }} 
-                                            @endif
+                                                    Rp.{{ number_format($cart->product->discount_price) }}
+                                                @else
+                                                    Rp.{{ number_format($cart->product->price) }}
+                                                @endif
                                             </div>
                                             <div class="product-subtitle">Rupiah</div>
                                         </td>
@@ -98,23 +122,18 @@
                         @php
                             $alamat = \App\Models\Address::where('users_id', Auth::user()->id)->count();
                         @endphp
-                        @if ($alamat >0)
-                        <a href="{{route('checkout.index')}}"  class="btn btn-success btn-block">
-                            Bayar Sekarang
-                        </a>
+                        @if ($alamat > 0)
+                            <a href="{{ route('checkout.index') }}" class="btn btn-success btn-block">
+                                Bayar Sekarang
+                            </a>
                         @else
-                        <a href="{{route('dashboard-settings-account')}}"  class="btn btn-success btn-block">
-                            Tambahkan alamat terlebih dahulu
-                        </a>
+                            <a href="{{ route('dashboard-settings-account') }}" class="btn btn-success btn-block">
+                                Tambahkan alamat terlebih dahulu
+                            </a>
                         @endif
-                       
                     </div>
+
                 </div>
-
-
-                
-                
-
                 {{-- <div class="row" data-aos="fade-up" data-aos-delay="150">
                     <div class="col-12">
                         <hr />
@@ -386,50 +405,73 @@
 
     <script>
         $(document).ready(function() {
-            $('select[name="province_origin"]').on('change', function() {
-                let provinceId = $(this).val();
-                if (provinceId) {
-                    jQuery.ajax({
-                        url: '/province/' + provinceId + '/cities',
-                        type: "GET",
-                        dataType: "json",
-                        success: function(data) {
-                            $('select[name="city_origin"]').empty();
-                            $.each(data, function(key, value) {
-                                $('select[name="city_origin"]').append(
-                                    '<option value=""' + key + ' >' + value +
-                                    '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('select[name="city_origin"]').empty();
+            $('.increment-btn').click(function(e) {
+                e.preventDefault();
+                var incre_value = $(this).parents('.quantity').find('.qty-input').val();
+                var value = parseInt(incre_value, 10);
+                value = isNaN(value) ? 0 : value;
+                if (value < 10) {
+                    value++;
+                    $(this).parents('.quantity').find('.qty-input').val(value);
+                }
+
+            });
+
+            $('.decrement-btn').click(function(e) {
+                e.preventDefault();
+                var decre_value = $(this).parents('.quantity').find('.qty-input').val();
+                var value = parseInt(decre_value, 10);
+                value = isNaN(value) ? 0 : value;
+                if (value > 1) {
+                    value--;
+                    $(this).parents('.quantity').find('.qty-input').val(value);
                 }
             });
-            $('select[name="province_destination"]').on('change', function() {
-                let provinceId = $(this).val();
-                if (provinceId) {
-                    jQuery.ajax({
-                        url: '/province/' + provinceId + '/cities',
-                        type: "GET",
-                        dataType: "json",
-                        success: function(data) {
-                            $('select[name="city_destination"]').empty();
-                            $.each(data, function(key, value) {
-                                $('select[name="city_destination"]').append(
-                                    '<option value=""' + key + ' >' + value +
-                                    '</option>');
-                            });
-                        }
-                    });
-                } else {
-                    $('select[name="city_destination"]').empty();
-                }
-            });
+
+            // $('select[name="province_origin"]').on('change', function() {
+            //     let provinceId = $(this).val();
+            //     if (provinceId) {
+            //         jQuery.ajax({
+            //             url: '/province/' + provinceId + '/cities',
+            //             type: "GET",
+            //             dataType: "json",
+            //             success: function(data) {
+            //                 $('select[name="city_origin"]').empty();
+            //                 $.each(data, function(key, value) {
+            //                     $('select[name="city_origin"]').append(
+            //                         '<option value=""' + key + ' >' + value +
+            //                         '</option>');
+            //                 });
+            //             }
+            //         });
+            //     } else {
+            //         $('select[name="city_origin"]').empty();
+            //     }
+            // });
+            // $('select[name="province_destination"]').on('change', function() {
+            //     let provinceId = $(this).val();
+            //     if (provinceId) {
+            //         jQuery.ajax({
+            //             url: '/province/' + provinceId + '/cities',
+            //             type: "GET",
+            //             dataType: "json",
+            //             success: function(data) {
+            //                 $('select[name="city_destination"]').empty();
+            //                 $.each(data, function(key, value) {
+            //                     $('select[name="city_destination"]').append(
+            //                         '<option value=""' + key + ' >' + value +
+            //                         '</option>');
+            //                 });
+            //             }
+            //         });
+            //     } else {
+            //         $('select[name="city_destination"]').empty();
+            //     }
+            // });
         });
     </script>
 
-    <script type="text/javascript">
+    {{-- <script type="text/javascript">
         // For example trigger on button clicked, or any time you need
         var payButton = document.getElementById('pay-button');
         payButton.addEventListener('click', function() {
@@ -437,7 +479,7 @@
             window.snap.pay('');
             // customer will be redirected after completing payment pop-up
         });
-    </script>
+    </script> --}}
 
     <script src="/script/navbar-scroll.js"></script>
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
