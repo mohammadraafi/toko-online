@@ -73,9 +73,19 @@
                                 <form action="{{ route('details-add', $product->id) }}" method="POST"
                                     enctype="multipart/form-data">
                                     @csrf
-                                    <div class="form-group">
+                                    {{-- <div class="form-group">
                                         <label for="">Quantity:</label>
                                         <input type="number" name="quantity_order" class="form-control w-25">
+                                    </div> --}}
+                                    <div class="input-group quantity" style="width: 15%">
+                                        <div class="input-group-prepend decrement-btn" style="cursor: pointer">
+                                            <span class="input-group-text">-</span>
+                                        </div>
+                                        <input type="text" class="qty-input form-control" maxlength="2" max="10"
+                                            name="quantity_order">
+                                        <div class="input-group-append increment-btn" style="cursor: pointer">
+                                            <span class="input-group-text">+</span>
+                                        </div>
                                     </div>
                                     @if ($product->quantity == 0)
                                         <button class="btn btn-success nav-link px-4 text-white btn-block mb-3" type="submit"
@@ -120,14 +130,10 @@
                                 @forelse ($reviews as $review)
                                     <li class="media">
                                         <div class="media-body">
-                                            <img
-                                            src="{{$review->user->photo}}"
-                                            class="mr-3"
-                                            alt=""
-                                          />
+                                            <img src="{{ $review->user->photo }}" class="mr-3" alt="" />
                                             <h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
                                             <h5 class="mt-2 mb-1">{{ $review->rating }}</h5>
-                                           <p> {{ $review->comment }}</p>
+                                            <p> {{ $review->comment }}</p>
                                         </div>
                                     </li>
                                     <hr>
@@ -192,6 +198,31 @@
             },
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $('.increment-btn').click(function(e) {
+                e.preventDefault();
+                var incre_value = $(this).parents('.quantity').find('.qty-input').val();
+                var value = parseInt(incre_value, 10);
+                value = isNaN(value) ? 0 : value;
+                if (value < 10) {
+                    value++;
+                    $(this).parents('.quantity').find('.qty-input').val(value);
+                }
 
+            });
+
+            $('.decrement-btn').click(function(e) {
+                e.preventDefault();
+                var decre_value = $(this).parents('.quantity').find('.qty-input').val();
+                var value = parseInt(decre_value, 10);
+                value = isNaN(value) ? 0 : value;
+                if (value > 1) {
+                    value--;
+                    $(this).parents('.quantity').find('.qty-input').val(value);
+                }
+            });
+        });
+    </script>
     <script src="/script/navbar-scroll.js"></script>
 @endpush

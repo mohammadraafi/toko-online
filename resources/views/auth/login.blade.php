@@ -32,6 +32,7 @@
                     </span>
                 @enderror
               </div>
+
               <div class="form-group">
                 <label>Password</label>
                 <input id="password" type="password" class="form-control w-75 @error('password') is-invalid @enderror" name="password" autocomplete="current-password">
@@ -42,6 +43,7 @@
                     </span>
                 @enderror
               </div>
+
               <button
                 class="btn btn-success btn-block w-75 mt-4"
                 type="submit"
@@ -84,7 +86,6 @@
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
-
                             <div class="col-md-6">
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 

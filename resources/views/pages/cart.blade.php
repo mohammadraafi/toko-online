@@ -49,9 +49,8 @@
                                         <td style="width: 35%;">
                                             <div class="product-title">{{ $cart->product->name }}</div>
                                         </td>
-                                        {{-- <form action="{{ route('cart-update', $cart->id) }}" method="POST"
+                                        {{-- <form action="{{ route('cart-update') }}" method="POST"
                                             enctype="multipart/form-data">
-                                            @method('PUT')
                                             @csrf
                                             <td class="cart-product-quantity" width="15%">
                                                 <div class="input-group quantity">
@@ -67,11 +66,12 @@
                                                 </div>
                                             </td>
                                             <div class="col-2 col-md-3 form-group">
-                                                <button class="btn btn-success" type="submit">
+                                                <button class="btn btn-success btn-block" type="submit">
                                                     Update Keranjang
                                                 </button>
                                             </div>
                                         </form> --}}
+
                                         <td style="width: 10%;">
                                             <div class="product-title">{{ $cart->quantity_order }}</div>
                                         </td>
@@ -95,7 +95,7 @@
                                                 @method('delete')
                                                 @csrf
                                                 <button type="submit" class="btn btn-remove-cart">
-                                                    Remove
+                                                    Hapus
                                                 </button>
                                             </form>
                                         </td>
@@ -104,6 +104,7 @@
                                 @endforeach
                             </tbody>
                         </table>
+
                     </div>
                 </div>
 

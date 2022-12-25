@@ -24,60 +24,65 @@ class CartController extends Controller
         $couriers = Courier::pluck('title', 'code');
         $provinces = Province::pluck('title', 'province_id');
 
+        // foreach ($carts as $cart) {
+        //     $cart = Cart::findOrFail($cart->id);
+        // }
+
+
         return view('pages.cart', [
             'carts' => $carts,
             'provinces' => $provinces,
-            'couriers' => $couriers
+            'couriers' => $couriers,
+            // 'cart' => $cart
         ]);
     }
 
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
+        // update quantity order dari keranjang
         DB::table('carts')->where('id', $request->id)->update([
             'quantity_order' => $request->quantity_order,
         ]);
 
-        // if ($request->quantity_order = 1) {
-        //     $cart = Cart::where('users_id', Auth::user()->id)->first();
-        //     $cart->total_price =  $cart->product->price;
-        //     $cart->update();
-        // }elseif ($request->quantity_order = 2) {
-        //     $cart = Cart::where('users_id', Auth::user()->id)->first();
-        //     $cart->total_price =  $cart->total_price * 2;
-        //     $cart->update();
-        // }elseif ($request->quantity_order = 3) {
-        //     $cart = Cart::where('users_id', Auth::user()->id)->first();
-        //     $cart->total_price =  $cart->product->price * 3;
-        //     $cart->update();
-        // }elseif ($request->quantity_order = 4) {
-        //     $cart = Cart::where('users_id', Auth::user()->id)->first();
-        //     $cart->total_price =  $cart->product->price * 4;
-        //     $cart->update();
-        // }elseif ($request->quantity_order = 5) {
-        //     $cart = Cart::where('users_id', Auth::user()->id)->first();
-        //     $cart->total_price =  $cart->product->price * 5;
-        //     $cart->update();
-        // } else {
+        $cart = Cart::where('users_id', Auth::user()->id)->first();
+        $product = Product::where('id', $cart->products_id)->first();
 
-        // }
-
-        if ($request->quantity_order = 1) {
-            $cart = Cart::where('users_id', Auth::user()->id)->first();
-            $cart->total_price =  $cart->product->price;
+        if ($request->quantity_order == 1) {
+            $cart->total_price =  $product->price*1;
             $cart->update();
-        } else {
-            $cart = Cart::where('users_id', Auth::user()->id)->first();
-            $cart->total_price =  $cart->total_price*$request->quantity_order;
+        }elseif ($request->quantity_order == 2) {
+            $cart->total_price =  $product->price*2;
+            $cart->update();
+        }elseif ($request->quantity_order == 3) {
+            $cart->total_price =  $product->price*3;
+            $cart->update();
+        }elseif ($request->quantity_order == 4) {
+            $cart->total_price =  $product->price*4;
+            $cart->update();
+        }elseif ($request->quantity_order == 5) {
+            $cart->total_price =  $product->price*5;
+            $cart->update();
+        }elseif ($request->quantity_order == 6) {
+            $cart->total_price =  $product->price*6;
+            $cart->update();
+        }elseif ($request->quantity_order == 7) {
+            $cart->total_price =  $product->price*7;
+            $cart->update();
+        }elseif ($request->quantity_order == 8) {
+            $cart->total_price =  $product->price*8;
+            $cart->update();
+        }elseif ($request->quantity_order == 9) {
+            $cart->total_price =  $product->price*9;
+            $cart->update();
+        }else {
+            $cart->total_price =  $product->price*10;
             $cart->update();
         }
 
-
-
-        //  dd($cart);
-
         return redirect()->route('cart');
     }
+
 
     public function getCities($id)
     {

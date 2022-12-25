@@ -40,7 +40,7 @@ Route::post('login', 'Auth\LoginController@login')->name('login.store');
 Route::group(['middleware' => ['auth']], function () {
     // Keranjang
     Route::get('/cart', 'CartController@index')->name('cart');
-    Route::put('/cart-update/{id}', 'CartController@update')->name('cart-update');
+    Route::post('/cart-update', 'CartController@update')->name('cart-update');
     Route::post('/cart', 'CartController@submit');
     Route::get('/province/{id}/cities', 'CartController@getCities');
     Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
