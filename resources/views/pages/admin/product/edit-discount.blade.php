@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Product')
-    
+
 @section('content')
 <div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
@@ -27,6 +27,7 @@
                             @csrf
                             <div class="row">
                                 <input type="text" name="users_id" class="form-control" value="{{Auth::user()->id}}" hidden>
+                                <input type="text" name="weight" class="form-control" value="{{$item->weight}}" hidden>
                                 <div class="col-md-12">
                                     <div class="form-group" hidden>
                                         <label>Nama Produk</label>

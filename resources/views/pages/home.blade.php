@@ -66,7 +66,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12" data-aos="fade-up">
-                <h5>Produk Baru</h5>
+                <h5>Produk Highlight</h5>
             </div>
         </div>
         <div class="row">
@@ -74,6 +74,7 @@
             $incrementProduct = 0;
             @endphp
             @forelse ($products as $product)
+            @if ($product->discount_price)
             <div class="col-6 col-md-4 col-lg-3" data-aos="fade-up" data-aos-delay="{{ $incrementProduct += 100 }}">
                 <a class="component-products d-block" href="{{ route('details', $product->id) }}">
                     <div class="products-thumbnail">
@@ -98,6 +99,8 @@
                     </div>
                 </a>
             </div>
+            @endif
+
             @empty
             <div class="col-12 text-center">
                 Belum ada produk

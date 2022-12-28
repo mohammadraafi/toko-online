@@ -8,6 +8,7 @@ use App\Category;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Yajra\DataTables\Facades\DataTables;
 use App\Http\Requests\Admin\ProductRequest;
@@ -79,9 +80,9 @@ class ProductController extends Controller
 
     public function update_discount(ProductRequest $request, $id)
     {
-        $request->validate([
-            'discount_price' => 'required',
-        ]);
+        // $request->validate([
+        //     'discount_price' => 'required',
+        // ]);
 
         $data = $request->all();
 
@@ -175,13 +176,17 @@ class ProductController extends Controller
      */
     public function update(ProductRequest $request, $id)
     {
+        // $user = Auth::user()->id;
+
         $data = $request->all();
+        // $data['users_id'] = $user;
 
         $item = Product::findOrFail($id);
 
         $data['slug'] = Str::slug($request->name);
 
         $item->update($data);
+
 
         return redirect()->route('product.index');
     }

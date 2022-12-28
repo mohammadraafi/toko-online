@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Produk')
-    
+
 @section('content')
 <div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
@@ -29,23 +29,14 @@
                             @method('PUT')
                             @csrf
                             <div class="row">
+                                <input type="text" name="users_id" class="form-control" value="{{Auth::user()->id}}" hidden>
+                                <input type="text" name="discount_price" class="form-control" value="{{$item->discount_price}}" hidden>
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Nama Produk</label>
                                         <input type="text" name="name" class="form-control" required value="{{$item->name}}">
                                     </div>
                                 </div>
-                                {{-- <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>User Produk</label>
-                                        <select name="users_id" id="" class="form-control">
-                                            <option value="{{$item->users_id}}" selected>{{$item->user->name}}</option>
-                                            @foreach ($users as $user)
-                                                <option value="{{$user->id}}">{{$user->name}}</option>
-                                            @endforeach
-                                        </select>
-                                    </div>
-                                </div> --}}
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Kategori Produk</label>
@@ -71,6 +62,12 @@
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
+                                        <label>Berat Produk (gr)</label>
+                                        <input type="number" name="weight" class="form-control" required value="{{$item->weight}}">
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
                                         <label>Deskripsi Produk</label>
                                         <textarea name="description" id="editor">{!! $item->description !!}</textarea>
                                     </div>
@@ -79,7 +76,7 @@
                             <div class="row">
                                 <div class="col text-right">
                                     <button type="submit" class="btn btn-success px-5">
-                                        Simpan  
+                                        Simpan
                                     </button>
                                 </div>
                             </div>
