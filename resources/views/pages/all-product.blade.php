@@ -55,11 +55,9 @@
                             <a class="component-products d-block" href="{{ route('details', $product->id) }}">
                                 <div class="products-thumbnail">
                                     <div class="products-image"
-                                        style="
-                 @if ($product->galleries) background-image: url('{{ Storage::url($product->galleries->first()->photos) }}');
-                 @else
-                    background-color: #eee @endif
-                ">
+                                        style=" @if ($product->galleries) background-image: url('{{ Storage::url($product->galleries->first()->photos ?? '') }}');
+                                             @else
+                                     background-color: #eee @endif ">
                                     </div>
                                 </div>
                                 <div class="products-text">
@@ -77,7 +75,7 @@
                         </div>
                     @empty
                         <div class="col-12 text-center">
-                            Belum ada produk    
+                            Belum ada produk
                         </div>
                     @endforelse
                 </div>
