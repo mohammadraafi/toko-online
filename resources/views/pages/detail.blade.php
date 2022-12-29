@@ -77,16 +77,20 @@
                                         <label for="">Quantity:</label>
                                         <input type="number" name="quantity_order" class="form-control w-25">
                                     </div> --}}
-                                    <div class="input-group quantity" style="width: 15%">
-                                        <div class="input-group-prepend decrement-btn" style="cursor: pointer">
-                                            <span class="input-group-text">-</span>
-                                        </div>
-                                        <input type="text" class="qty-input form-control" maxlength="2" max="10"
-                                            name="quantity_order">
-                                        <div class="input-group-append increment-btn" style="cursor: pointer">
-                                            <span class="input-group-text">+</span>
+                                    <div class="form-group mt-3">
+                                        <label for="">Jumlah :</label>
+                                        <div class="input-group quantity mb-3 " style="width: 15%">
+                                            <div class="input-group-prepend decrement-btn" style="cursor: pointer">
+                                                <span class="input-group-text">-</span>
+                                            </div>
+                                            <input type="text" class="qty-input form-control" maxlength="2" max="10"
+                                                name="quantity_order">
+                                            <div class="input-group-append increment-btn" style="cursor: pointer">
+                                                <span class="input-group-text">+</span>
+                                            </div>
                                         </div>
                                     </div>
+
                                     @if ($product->quantity == 0)
                                         <button class="btn btn-success nav-link px-4 text-white btn-block mb-3" type="submit"
                                             disabled>
