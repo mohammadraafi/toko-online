@@ -13,9 +13,9 @@
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                    <li class="breadcrumb-item"><a href="{{route('pengaduan.pelanggan.index')}}">Pengaduan</a></li>
+                                    <li class="breadcrumb-item"><a href="{{route('pengaduan.pelanggan.index')}}">Komplain</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Detail Pengaduan
+                                        Detail Komplain
                                     </li>
                                 </ol>
                             </nav>
@@ -28,12 +28,12 @@
                     <div class="row d-block mx-0">
                         @auth
                             <div class="headline font-red-hat-display">
-                                Data Pengaduan
+                                Data Komplain
                             </div>
                             <div class="section-content section-dashboard-home" data-aos="fade-up">
                                 <div class="container-fluid">
                                     <div class="dashboard-heading">
-                                        <h2 class="dashboard-title text-white">Detail Pengaduan</h2>
+                                        <h2 class="dashboard-title text-white">Detail Komplain</h2>
                                     </div>
                                     <div class="dashboard-content">
                                         <div class="row">
@@ -82,7 +82,7 @@
                                                 <div class="card mb-3">
                                                     <div class="card-body">
                                                         <div>
-                                                            <h3 class="text-center">Status Pengaduan</h3>
+                                                            <h3 class="text-center">Status Komplain</h3>
                                                             <div class="list-group">
                                                                 @forelse ($tanggapans as $tanggapan)
                                                                     <div class="list-group-item list-group-item-action">
@@ -99,7 +99,7 @@
                                                             </div>
                                                         </div>
                                                     @empty
-                                                        <h2>Tidak Ada Pengaduan</h2>
+                                                        <h2>Tidak Ada Komplain</h2>
                                                     </div>
                                                 </div>
                                             </div>

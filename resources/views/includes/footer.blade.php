@@ -92,7 +92,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="">
                         <div class="list-space">
-                            <img src="http://api.elements.buildwithangga.com/storage/files/2/assets/Header/Header2/Header-2-4.png"
+                            <img src="/images/logos.png" alt="logo" width="75" height="75"
                                 alt="" />
                         </div>
                         {{-- <nav class="list-unstyled">
@@ -142,8 +142,11 @@
                     <nav class="list-unstyled">
                         <li class="list-space">
                             <a href="" class="list-menu">semestacomp@gmail.com</a>
-                        {{-- </li>
-                        <li class="list-space">
+                         </li> 
+                         <li>
+                            <a href="https://wa.me/6282111653484?text=Saya%20ingin%20mengadukan%20keluhan%20" class="list-menu">No Telepon</a>
+                         </li>
+                        {{-- <li class="list-space">
                             <a href="" class="list-menu">Profile</a>
                         </li>
                         <li class="list-space">
@@ -151,7 +154,7 @@
                         </li>
                         <li class="list-space">
                             <a href="" class="list-menu">Blog</a>
-                        </li> --}}
+                        </li> --}} 
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -161,11 +164,9 @@
                             <a href="{{route('kritik-customer.index')}}" class="list-menu">Kritik & Saran</a>
                         </li>
                         <li class="list-space">
-<<<<<<< HEAD
-                            <a href="https://wa.me/6282111653484?text=Saya%20ingin%20mengadukan%20keluhan%20" class="list-menu">Komplain</a>
-=======
-                            <a href="{{route("pengaduan.pelanggan.index")}}" class="list-menu">Pengaduan</a>
->>>>>>> 59110b76027ab16320fc18a84503bfdf265940e2
+                
+                            <a href="{{route("pengaduan.pelanggan.index")}}" class="list-menu">Komplain</a>
+
                         </li>
                     </nav>
                 </div>

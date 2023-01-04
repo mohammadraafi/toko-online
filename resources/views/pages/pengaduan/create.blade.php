@@ -12,9 +12,9 @@
                         <nav aria-label="breadcrumb">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item"><a href="/">Home</a></li>
-                                <li class="breadcrumb-item"><a href="{{route('pengaduan.pelanggan.index')}}">Pengaduan</a></li>
+                                <li class="breadcrumb-item"><a href="{{route('pengaduan.pelanggan.index')}}">Komplain</a></li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Beri Pengaduan
+                                    Beri Komplain
                                 </li>
                             </ol>
                         </nav>
@@ -25,7 +25,7 @@
         <section class="store-cart">
             <div class="container">
                 <h1>
-                    Berikan Pengaduan
+                    Berikan Komplain
                 </h1>
                 <div class="card" style="background-color : black">
                     <div class="card-body">
@@ -51,7 +51,7 @@
                                 <div class="col text-right">
                                     <button type="submit" class="btn px-5"
                                         style="background-color: red; color :white">
-                                        Berikan Pengaduan
+                                        Berikan Komplain
                                     </button>
                                 </div>
                             </div>

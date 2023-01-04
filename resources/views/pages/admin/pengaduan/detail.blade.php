@@ -4,7 +4,7 @@
     <div class="section-content section-dashboard-home mt-5" data-aos="fade-up">
         <div class="container-fluid">
             <div class="dashboard-heading">
-                <h2 class="dashboard-title">Detail Pengaduan</h2>
+                <h2 class="dashboard-title">Detail Komplain</h2>
             </div>
             <div class="dashboard-content">
                 <div class="row">
@@ -14,9 +14,9 @@
                                 <div class="row">
                                     <div class="col-md-8">
                                         <div class="card-body">
-                                            <h4>Nama : {{ $pengaduan->user->name }}</h4>
-                                            <h4>No.Telepon : {{ $pengaduan->user->phone_number }}</h4>
-                                            <h4>Tanggal : {{ $pengaduan->created_at->format('d-m-Y - H:i:s') }}</h4>
+                                            <h5>Nama : {{ $pengaduan->user->name }}</h5>
+                                            <h5>No.Telepon : {{ $pengaduan->user->phone_number }}</h5>
+                                            <h5>Tanggal : {{ $pengaduan->created_at->format('d-m-Y - H:i:s') }}</h5>
                                         </div>
                                     </div>
                                 </div>
@@ -26,7 +26,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h3 class="text-center">Keterangan</h3>
+                                    <h5 class="text-center">Keterangan</h5>
                                     <p>{{ $pengaduan->keterangan }}</p>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h3 class="text-center">Foto</h3>
+                                    <h5 class="text-center">Foto</h5>
                                     <a href="{{ asset('storage/' . $pengaduan->foto) }}" target="_blank">
                                         <img src="{{ Storage::url($pengaduan->foto) }}" width="200"
                                             height="200" class="rounded-square">
@@ -51,7 +51,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h3 class="text-center">Status Pengaduan</h3>
+                                    <h5 class="text-center">Status Komplain</h5>
                                     <div class="list-group">
                                         @forelse ($tanggapans as $tanggapan)
                                             <div class="list-group-item list-group-item-action">
@@ -67,7 +67,7 @@
                                     </div>
                                 </div>
                             @empty
-                                <h2>Tidak Ada Pengaduan</h2>
+                                <h2>Tidak Ada Komplain</h2>
                             </div>
                         </div>
                     </div>
@@ -76,8 +76,12 @@
             </div>
         </div>
 
+        <div class="container-fluid">
+            
         <a href="{{route('tanggapan.show', $pengaduan->id)}}"
             class="btn btn-primary btn-lg active mb-5">Berikan Tanggapan</a>
+        </div>
+
     </div>
 
     {{-- @foreach ($pengaduans as $pengaduan) --}}
