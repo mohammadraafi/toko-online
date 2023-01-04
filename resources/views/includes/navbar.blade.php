@@ -24,7 +24,7 @@
                 </li>
                 @auth
                 {{-- <li class="nav-item">
-                    <a class="nav-link" href="{{ route('kritik-customer.index') }}">Kritik & Saran</a>
+                    <a class="nav-link" href="{{ route('kritik-customer.index') }}">Pengaduan</a>
                 </li> --}}
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('history-transaction.index') }}">Transaksi</a>

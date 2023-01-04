@@ -161,7 +161,7 @@
                             <a href="{{route('kritik-customer.index')}}" class="list-menu">Kritik & Saran</a>
                         </li>
                         <li class="list-space">
-                            <a href="https://wa.me/6282111653484?text=Saya%20ingin%20mengadukan%20keluhan%20" class="list-menu">Pengaduan</a>
+                            <a href="{{route("pengaduan.pelanggan.index")}}" class="list-menu">Pengaduan</a>
                         </li>
                     </nav>
                 </div>

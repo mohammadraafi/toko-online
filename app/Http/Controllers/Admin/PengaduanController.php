@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\Kritik;
-use App\Models\Review;
-use App\Models\Responses;
+use App\Models\Pengaduan;
+use App\Models\Tanggapan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
-
-class KritikController extends Controller
+class PengaduanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,32 +18,19 @@ class KritikController extends Controller
      */
     public function index()
     {
-        $kritiks = Kritik::with(['user'])->orderBy('created_at', 'desc')->get();
-        // $satu = Kritik::where('rating', '1/5')->count();
-        // $dua = Kritik::where('rating', '2/5')->count();
-        // $tiga = Kritik::where('rating', '3/5')->count();
-        // $empat = Kritik::where('rating', '4/5')->count();
-        // $lima = Kritik::where('rating', '5/5')->count();
+        $pengaduans = Pengaduan::orderBy('created_at', 'desc')->get();
 
-        return view('pages.admin.kritik.index', [
-            'kritiks' => $kritiks,
-            // 'satu' => $satu,
-            // 'dua' => $dua,
-            // 'tiga' => $tiga,
-            // 'empat' => $empat,
-            // 'lima' => $lima
+        return view('pages.admin.pengaduan.index', [
+            'pengaduans' => $pengaduans
         ]);
     }
 
-
-
-
-    public function customer()
+    public function pelanggan()
     {
-        $kritiks = Kritik::where('users_id', Auth::user()->id)->orderBy('created_at', 'desc')->get();
+        $pengaduans = Pengaduan::with(['tanggapan', 'user'])->where('users_id', Auth::user()->id)->orderBy('created_at', 'DESC')->get();
 
-        return view('pages.kritik.index', [
-            'kritiks' => $kritiks
+        return view('pages.pengaduan.index', [
+            'pengaduans' => $pengaduans
         ]);
     }
 
@@ -56,7 +41,7 @@ class KritikController extends Controller
      */
     public function create()
     {
-        return view('pages.kritik.create');
+        return view('pages.pengaduan.create');
     }
 
     /**
@@ -67,19 +52,23 @@ class KritikController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'keterangan' => 'required',
+            'foto' => 'required'
+        ]);
+
         $id = Auth::user()->id;
-        $status = 'Belum direspon';
 
         $data = $request->all();
-
         $data['users_id'] = $id;
-        $data['status'] = $status;
+        $data['status'] = 'Belum diproses';
+        $data['foto'] =  $request->file('foto')->store('assets/product', 'public');
 
-        Kritik::create($data);
+        Pengaduan::create($data);
 
-        Alert::success('Berhasil', 'Kritik & Saran terkirim');
+        Alert::success('Berhasil', 'Pengaduan terkirim');
 
-        return redirect()->route('kritik-customer.index');
+        return redirect()->route('pengaduan.create');
     }
 
     /**
@@ -90,16 +79,29 @@ class KritikController extends Controller
      */
     public function show($id)
     {
-        $Kritiks = Kritik::with([
-            'user'
+        $pengaduans = Pengaduan::with([
+            'details', 'user',
         ])->findOrFail($id);
 
-        $responsess = Responses::where('Kritik_id', $id)->orderBy('created_at', 'DESC')->get();
+        $tanggapans = Tanggapan::where('pengaduans_id', $id)->orderBy('created_at', 'DESC')->get();
 
-        return view('pages.admin.kritik.detail', [
-            'pengaduans' => $Kritiks,
-            'responsess' => $responsess,
+        return view('pages.admin.pengaduan.detail', [
+            'pengaduans' => $pengaduans,
+            'tanggapans' => $tanggapans,
+        ]);
+    }
 
+    public function detail_pengaduan($id)
+    {
+        $pengaduans = Pengaduan::with([
+            'details', 'user',
+        ])->findOrFail($id);
+
+        $tanggapans = Tanggapan::where('pengaduans_id', $id)->orderBy('created_at', 'DESC')->get();
+
+        return view('pages.pengaduan.detail', [
+            'pengaduans' => $pengaduans,
+            'tanggapans' => $tanggapans,
         ]);
     }
 

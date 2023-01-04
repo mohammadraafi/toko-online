@@ -28,33 +28,49 @@
                 </div>
                 <div class="list-group list-group-flush">
                     <a href="{{ route('admin-dashboard') }}"
-                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin') ? 'active' : '' }}">Laporan Penjualan</a>
-
-                    <a href="{{ route('product.index') }}"
-                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/product') ? 'active' : '' }}">Kelola Data Produk</a>
-
-                        <a href="{{ route('product-discount.index') }}"
-                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/product-discount') ? 'active' : '' }}">Kelola Data Promo</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin') ? 'active' : '' }}">Laporan
+                        Penjualan</a>
 
                     <a href="{{ route('category.index') }}"
-                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/category') ? 'active' : '' }}">Kelola Data Kategori</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/category') ? 'active' : '' }}">Kelola
+                        Data Kategori</a>
+
+                    <a href="{{ route('product.index') }}"
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/product') ? 'active' : '' }}">Kelola
+                        Data Produk</a>
+
+                    <a href="{{ route('product-discount.index') }}"
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/product-discount') ? 'active' : '' }}">Kelola
+                        Data Promo</a>
+
 
                     <a href="{{ route('dashboard-transactions') }}"
-                        class="list-group-item list-group-item-action bg-whiter {{ request()->is('admin/transactions') ? 'active' : '' }}">Kelola Data Transaksi
+                        class="list-group-item list-group-item-action bg-whiter {{ request()->is('admin/transactions') ? 'active' : '' }}">Kelola
+                        Data Transaksi
                     </a>
 
                     <a href="{{ route('review.index') }}"
-                        class="list-group-item list-group-item-action bg-white {{ request()->is('ulasan-produk') ? 'active' : '' }}">Kelola Data Ulasan Produk
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('ulasan-produk') ? 'active' : '' }}">Kelola
+                        Data Ulasan Produk
                     </a>
+
+                    <a href="{{ route('pengaduan.index') }}"
+                    class="list-group-item list-group-item-action bg-white {{ request()->is('pengaduan') ? 'active' : '' }}">Kelola
+                    Data Pengaduan
+                </a>
+
                     <a href="{{ route('kritik.index') }}"
-                         class="list-group-item list-group-item-action bg-white {{ request()->is('complaint') ? 'active' : '' }}">Kelola Data Kritik & Saran
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('complaint') ? 'active' : '' }}">Kelola
+                        Data Kritik & Saran
                     </a>
 
                     <a href="{{ route('user.index') }}"
-                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/user') ? 'active' : '' }}">Kelola Data Pelanggan</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/user') ? 'active' : '' }}">Kelola
+                        Data Pelanggan</a>
 
                     <a href="{{ route('alamat-toko.index') }}"
-                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/alamat-toko') ? 'active' : '' }}">Kelola Data Alamat Toko</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/alamat-toko') ? 'active' : '' }}">Kelola
+                        Data Alamat Toko</a>
                     {{-- <a
             href="/dashboard-account.html"
             class="list-group-item list-group-item-action"

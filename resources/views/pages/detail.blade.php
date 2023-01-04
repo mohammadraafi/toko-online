@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('title', 'Detail Store')
-
+@push('prepend-style')
+    <style>
+      .rating{
+        color: yellow;
+      }
+    </style>
+@endpush
 @section('content')
     <!-- Page Content -->
     <div class="page-content page-details">
@@ -136,7 +142,27 @@
                                         <div class="media-body">
                                             <img src="{{ $review->user->photo }}" class="mr-3" alt="" />
                                             <h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
-                                            <h5 class="mt-2 mb-1">{{ $review->rating }}</h5>
+                                            @if ($review->rating == 1)
+                                            <i class="fa fa-star rating"></i>
+                                            @elseif ($review->rating == 2)
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            @elseif ($review->rating == 3)
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            @elseif ($review->rating == 4)
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            @else
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            @endif
                                             <p> {{ $review->comment }}</p>
                                         </div>
                                     </li>
@@ -145,7 +171,6 @@
                                     <h5>Belum ada ulasan</h5>
                                 @endforelse
                                 {{-- <li class="media my-4">
-
                   <div class="media-body">
                     <h5 class="mt-2 mb-1">Anna Sukkirata</h5>
                     Color is great with the minimalist concept. Even I thought
@@ -174,7 +199,6 @@
         </div>
     </div>
 @endsection
-
 @push('addon-script')
     <script src="/vendor/vue/vue.js"></script>
     <script>

@@ -59,20 +59,20 @@
                                             </div>
                                         </td>
                                         <td>
-                                            @if ($transaction->shipping_status == 'Dikemas' || $transaction->shipping_status == 'Dikirim' )
-                                            <div class="product-title">
-                                                <button class="btn btn-sm btn-primary mt-2" data-toggle="modal"
-                                                    data-target="#modal-{{ $transactionDetail->id }}" disabled>
-                                                    Beri ulasan
-                                                </button>
-                                            </div>
+                                            @if ($transaction->shipping_status == 'Dikemas' || $transaction->shipping_status == 'Dikirim')
+                                                <div class="product-title">
+                                                    <button class="btn btn-sm btn-primary mt-2" data-toggle="modal"
+                                                        data-target="#modal-{{ $transactionDetail->id }}" disabled>
+                                                        Beri ulasan
+                                                    </button>
+                                                </div>
                                             @elseif($transaction->shipping_status == 'Pesanan sudah diterima')
-                                            <div class="product-title">
-                                                <button class="btn btn-sm btn-primary mt-2" data-toggle="modal"
-                                                    data-target="#modal-{{ $transactionDetail->id }}" >
-                                                    Beri ulasan
-                                                </button>
-                                            </div>
+                                                <div class="product-title">
+                                                    <button class="btn btn-sm btn-primary mt-2" data-toggle="modal"
+                                                        data-target="#modal-{{ $transactionDetail->id }}">
+                                                        Beri ulasan
+                                                    </button>
+                                                </div>
                                             @endif
                                         </td>
                                     </tr>
@@ -103,19 +103,33 @@
                         <form action="{{ route('review.store') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="row">
-                                <input type="text" name="users_id" value="{{Auth::user()->id}}" hidden>
+                                <input type="text" name="users_id" value="{{ Auth::user()->id }}" hidden>
                                 <input type="text" name="transaction_detail_id" value="{{ $data->id }}" hidden>
                                 <input type="text" name="products_id" value="{{ $data->product->id }}" hidden>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Rating</label>
+                                        {{-- <label>Rating</label>
                                         <select name="rating" id="" class="form-control">
                                             <option value="Buruk">Buruk</option>
                                             <option value="Kurang Baik">Kurang Baik</option>
                                             <option value="Cukup Baik">Cukup Baik</option>
                                             <option value="Baik">Baik</option>
                                             <option value="Sangat Baik">Sangat Baik</option>
-                                        </select>
+                                        </select> --}}
+                                        <div class="rating-css">
+                                            <div class="star-icon">
+                                                <input type="radio" value="1" name="rating" checked id="rating1">
+                                                <label for="rating1" class="fa fa-star"></label>
+                                                <input type="radio" value="2" name="rating" id="rating2">
+                                                <label for="rating2" class="fa fa-star"></label>
+                                                <input type="radio" value="3" name="rating" id="rating3">
+                                                <label for="rating3" class="fa fa-star"></label>
+                                                <input type="radio" value="4" name="rating" id="rating4">
+                                                <label for="rating4" class="fa fa-star"></label>
+                                                <input type="radio" value="5" name="rating" id="rating5">
+                                                <label for="rating5" class="fa fa-star"></label>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
