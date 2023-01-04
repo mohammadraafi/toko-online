@@ -26,7 +26,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h3 class="text-center">Keterangan</h3>
+                                    <h3 >Keterangan</h3>
                                     <p>{{ $pengaduan->keterangan }}</p>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h3 class="text-center">Foto</h3>
+                                    <h3 ">Foto</h3>
                                     <a href="{{ asset('storage/' . $pengaduan->foto) }}" target="_blank">
                                         <img src="{{ Storage::url($pengaduan->foto) }}" width="200"
                                             height="200" class="rounded-square">
@@ -51,14 +51,14 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h3 class="text-center">Status Pengaduan</h3>
+                                    <h3 >Status Pengaduan</h3>
                                     <div class="list-group">
                                         @forelse ($tanggapans as $tanggapan)
-                                            <div class="list-group-item list-group-item-action">
-                                                <div class="d-flex w-100 justify-content-between">
-                                                    <h5 class="mb-1">{{ $tanggapan->status_pengaduan }}</h5>
-                                                    <small>{{ $tanggapan->created_at }}</small>
+                                            <div class="list-group-item list-group-item-action mr-5">
+                                                <div class="d-flex w-100 justify-content-between mr-5">
+                                                    <h5 class="mb-1" style="margin-right: 50px;">{{ $tanggapan->status_pengaduan }}</h5>
                                                 </div>
+                                                <small>{{ $tanggapan->created_at }}</small>
                                                 <p class="mb-1">{{ $tanggapan->tanggapan }}</p>
                                             </div>
                                         @empty
@@ -76,8 +76,11 @@
             </div>
         </div>
 
-        <a href="{{route('tanggapan.show', $pengaduan->id)}}"
-            class="btn btn-primary btn-lg active mb-5">Berikan Tanggapan</a>
+        <div class="container-fluid">
+            <a href="{{route('tanggapan.show', $pengaduan->id)}}"
+                class="btn btn-primary btn-lg active mb-5">Berikan Tanggapan</a>
+        </div>
+
     </div>
 
     {{-- @foreach ($pengaduans as $pengaduan) --}}
