@@ -26,7 +26,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h5 class="text-center">Keterangan</h5>
+                                    <h5>Keterangan</h5>
                                     <p>{{ $pengaduan->keterangan }}</p>
                                 </div>
                             </div>
@@ -37,7 +37,7 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h5 class="text-center">Foto</h5>
+                                    <h5 >Foto</h5>
                                     <a href="{{ asset('storage/' . $pengaduan->foto) }}" target="_blank">
                                         <img src="{{ Storage::url($pengaduan->foto) }}" width="200"
                                             height="200" class="rounded-square">
@@ -51,14 +51,15 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-                                    <h5 class="text-center">Status Komplain</h5>
+                                    <h5 >Status Komplain</h5>
                                     <div class="list-group">
                                         @forelse ($tanggapans as $tanggapan)
                                             <div class="list-group-item list-group-item-action">
                                                 <div class="d-flex w-100 justify-content-between">
                                                     <h5 class="mb-1">{{ $tanggapan->status_pengaduan }}</h5>
-                                                    <small>{{ $tanggapan->created_at }}</small>
+                                                   
                                                 </div>
+                                                <small>{{ $tanggapan->created_at }}</small>
                                                 <p class="mb-1">{{ $tanggapan->tanggapan }}</p>
                                             </div>
                                         @empty

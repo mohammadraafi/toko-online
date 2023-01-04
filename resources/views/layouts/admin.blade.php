@@ -57,7 +57,7 @@
 
                     <a href="{{ route('pengaduan.index') }}"
                     class="list-group-item list-group-item-action bg-white {{ request()->is('pengaduan') ? 'active' : '' }}">Kelola
-                    Data Pengaduan
+                    Data Komplain
                 </a>
 
                     <a href="{{ route('kritik.index') }}"
