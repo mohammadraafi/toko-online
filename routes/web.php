@@ -18,18 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-// Client Side
+//
 Route::get('/', 'HomeController@index')->name('home');
 
+// Kategori
 Route::get('/categories', 'CategoryController@index')->name('categories');
 Route::get('/categories/{id}', 'CategoryController@detail')->name('categories-detail');
 
+// Detail Produk
 Route::get('/details/{id}', 'DetailController@index')->name('details');
 Route::post('/details/{id}', 'DetailController@add')->name('details-add');
 
+//
 Route::post('/checkout/callback', 'CheckoutController@callback')->name('midtrans-callback');
-
-Route::get('/success', 'CartController@success')->name('success');
 
 // Auth
 Route::get('/register/success', 'Auth\RegisterController@success')->name('register-success');
@@ -45,8 +46,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/province/{id}/cities', 'CartController@getCities');
     Route::delete('/cart/{id}', 'CartController@delete')->name('cart-delete');
 
-
-
     // Alamat customer
     // Route::get('/alamat-customer', 'AlamatController@index')->name('alamat-customer.index');
     Route::get('/alamat-customer/create', 'AlamatController@create')->name('alamat-customer.create');
@@ -55,47 +54,37 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/alamat/edit/{id}', 'AlamatController@edit')->name('alamat-customer.edit');
     Route::post('/alamat/update/{id}', 'AlamatController@update')->name('alamat-customer.update');
 
+    // Checkout
     Route::get('/checkout', 'CheckoutController@index')->name('checkout.index');
     Route::post('/checkout-store', 'CheckoutController@process')->name('checkout');
 
+    //transaksi pelanggan
     Route::get('/history-transactions', 'TransactionsController@index')->name('history-transaction.index');
     Route::get('/history-transactions/detail/{id}', 'TransactionsController@show')->name('history-transaction.show');
     Route::post('/history-transactions/detail/{id}', 'TransactionsController@recieved')->name('history-transaction.recieved');
 
     // Dashboard
-    Route::get('/dashboard', 'DashboardController@index')->name('dashboard');
-
-    Route::get('/dashboard/products', 'DashboardProductController@index')->name('dashboard-products');
-    Route::get('/dashboard/products/create', 'DashboardProductController@create')->name('dashboard-product-create');
-    Route::post('/dashboard/products/create', 'DashboardProductController@store')->name('dashboard-product-store');
-    Route::get('/dashboard/products/{id}', 'DashboardProductController@details')->name('dashboard-product-details');
-    Route::post('/dashboard/products/{id}', 'DashboardProductController@update')->name('dashboard-product-update');
-    Route::post('/dashboard/products/gallery/upload', 'DashboardProductController@uploadGallery')
-        ->name('dashboard-product-gallery-upload');
-    Route::get('/dashboard/products/gallery/delete/{id}', 'DashboardProductController@deleteGallery')
-        ->name('dashboard-product-gallery-delete');
-
-
     Route::get('/dashboard/settings', 'DashboardSettingController@store')->name('dashboard-settings-store');
     Route::get('/alamat-customer', 'DashboardSettingController@account')->name('dashboard-settings-account');
     Route::get('/getcity/{id}', 'DashboardSettingController@getCity')->name('dashboard-settings.getCity');
     Route::post('/dashboard/account/{redirect}', 'DashboardSettingController@update')->name('dashboard-settings-redirect');
     Route::post('/dashboard/account', 'DashboardSettingController@updatePhoto')->name('dashboard-settings-photo');
 
-
     // review
     Route::get('/ulasan-produk', 'ReviewController@index')->name('review.index');
     Route::post('/review-post', 'ReviewController@store')->name('review.store');
 
     // kritik
-
     Route::get('/kritik-customer', 'Admin\KritikController@customer')->name('kritik-customer.index');
     Route::get('/kritik-create', 'Admin\KritikController@create')->name('kritik.create');
     Route::post('/kritik-post', 'Admin\KritikController@store')->name('kritik.store');
     Route::get('/detail-penilaian/{id}',  'Admin\KritikController@show')->name('kritik.show');
 
-    // Response
-
+    // pengaduan
+    Route::get('/pengaduan-pelanggan', 'Admin\PengaduanController@pelanggan')->name('pengaduan.pelanggan.index');
+    Route::get('/tambah-pengaduan', 'Admin\PengaduanController@create')->name('pengaduan.create');
+    Route::post('/tambah-pengaduan', 'Admin\PengaduanController@store')->name('pengaduan.store');
+    Route::get('/detail-pengaduan-pelanggan/{id}', 'Admin\PengaduanController@detail_pengaduan')->name('pengaduan.pelanggan.detail');
 });
 
 Route::prefix('admin')
@@ -128,10 +117,18 @@ Route::prefix('admin')
         Route::get('/transactions/{id}', 'DashboardTransactionController@details')->name('dashboard-transaction-details');
         Route::post('/transactions/{id}', 'DashboardTransactionController@update')->name('dashboard-transaction-update');
 
-        // Tanggapan
-        Route::post('/respnses-post', 'ResponsesController@store')->name('responses.store');
-        Route::get('/respnses-add/{id}', 'ResponsesController@show')->name('responses.add');
+        // Pengaduan
+        Route::get('/pengaduan', 'PengaduanController@index')->name('pengaduan.index');
+        Route::get('detail-pengaduan/{id}', 'PengaduanController@show')->name('pengaduan.show');
+
+        // Tanggapan Pengaduan
+        Route::get('/tambah-tanggapan/{id}', 'TanggapanController@show')->name('tanggapan.show');
+        Route::post('/tanggpan-store', 'TanggapanController@store')->name('tanggapan.store');
 
         // Kritik
         Route::get('/kritik', 'KritikController@index')->name('kritik.index');
+
+        // Tanggapan kritik
+        Route::post('/responses-post', 'ResponsesController@store')->name('responses.store');
+        Route::get('/responses-add/{id}', 'ResponsesController@show')->name('responses.add');
     });

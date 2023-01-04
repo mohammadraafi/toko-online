@@ -42,7 +42,7 @@
                                     <tr>
                                         <td style="width: 25%;">
                                             @if ($cart->product->galleries)
-                                                <img src="{{ Storage::url($cart->product->galleries->first()->photos) }}"
+                                                <img src="{{ Storage::url($cart->product->galleries->first()->photos ?? '') }}"
                                                     alt="" class="cart-image" />
                                             @endif
                                         </td>

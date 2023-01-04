@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Product Gallery')
-    
+
 @section('content')
 <div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
@@ -21,13 +21,14 @@
                             <table class="table table-hover scroll-horizontal-vertical w-100" id="crudTable">
                                 <thead>
                                     <tr>
-                                        {{-- <th>ID</th> --}}
+                                        <th>ID</th>
                                         <th>Produk</th>
                                         <th>Foto</th>
                                         <th>Action</th>
                                     </tr>
                                 </thead>
-                                <tbody>
+                                <tbody></tbody>
+                                {{-- <tbody>
                                     @forelse ($photos as $photo)
                                     <tr>
                                         <td>{{$photo->product->name}}</td>
@@ -36,7 +37,7 @@
                                         </td>
                                         <td> <div class= "btn-group">
                                             <div class= "dropdown">
-                                                <button class="btn btn-primay dropdown-toggle mr-1 mb-1" 
+                                                <button class="btn btn-primay dropdown-toggle mr-1 mb-1"
                                                     type="button"
                                                     data-toggle="dropdown">
                                                     Aksi
@@ -56,8 +57,8 @@
                                     @empty
                                         <h2>Belum ada foto</h2>
                                     @endforelse
-                                    
-                                </tbody>
+
+                                </tbody> --}}
                             </table>
                         </div>
                     </div>
@@ -68,20 +69,20 @@
 </div>
 @endsection
 
-{{-- @push('addon-script')
+@push('addon-script')
     <script>
         $(document).ready(function() {
         var datatable = $('#crudTable').DataTable({
             processing: true,
             serverSide: true,
-            // ordering: true,
+            ordering: true,
             ajax: {
                 url: '{!! url()->current() !!}',
                 type: 'GET',
-                
+
             },
             columns: [
-                // {data: 'id', name: 'id'},
+                {data: 'id', name: 'id'},
                 {data: 'product.name', name: 'product.name'},
                 {data: 'photos', name: 'photos'},
                 {
@@ -98,4 +99,4 @@
         });
         });
     </script>
-@endpush --}}
+@endpush

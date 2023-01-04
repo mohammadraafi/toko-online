@@ -57,7 +57,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Jumlah Produk</label>
-                                        <input type="number" name="quantity" class="form-control" required value="{{$item->price}}">
+                                        <input type="number" name="quantity" class="form-control" required value="{{$item->quantity}}">
                                     </div>
                                 </div>
                                 <div class="col-md-12">

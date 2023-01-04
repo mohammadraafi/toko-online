@@ -11,7 +11,7 @@ class Complaint extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['users_id', 'complaint', 'status', 'rating'];
+    protected $fillable = ['users_id', 'complaint', 'status'];
 
     public function user()
     {

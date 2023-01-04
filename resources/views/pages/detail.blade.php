@@ -1,7 +1,13 @@
 @extends('layouts.app')
 
 @section('title', 'Detail Store')
-
+@push('prepend-style')
+    <style>
+      .rating{
+        color: yellow;
+      }
+    </style>
+@endpush
 @section('content')
     <!-- Page Content -->
     <div class="page-content page-details">
@@ -77,16 +83,20 @@
                                         <label for="">Quantity:</label>
                                         <input type="number" name="quantity_order" class="form-control w-25">
                                     </div> --}}
-                                    <div class="input-group quantity" style="width: 15%">
-                                        <div class="input-group-prepend decrement-btn" style="cursor: pointer">
-                                            <span class="input-group-text">-</span>
-                                        </div>
-                                        <input type="text" class="qty-input form-control" maxlength="2" max="10"
-                                            name="quantity_order">
-                                        <div class="input-group-append increment-btn" style="cursor: pointer">
-                                            <span class="input-group-text">+</span>
+                                    <div class="form-group mt-3">
+                                        <label for="">Jumlah :</label>
+                                        <div class="input-group quantity mb-3 " style="width: 15%">
+                                            <div class="input-group-prepend decrement-btn" style="cursor: pointer">
+                                                <span class="input-group-text">-</span>
+                                            </div>
+                                            <input type="text" class="qty-input form-control" maxlength="2" max="10"
+                                                name="quantity_order">
+                                            <div class="input-group-append increment-btn" style="cursor: pointer">
+                                                <span class="input-group-text">+</span>
+                                            </div>
                                         </div>
                                     </div>
+
                                     @if ($product->quantity == 0)
                                         <button class="btn btn-success nav-link px-4 text-white btn-block mb-3" type="submit"
                                             disabled>
@@ -132,7 +142,27 @@
                                         <div class="media-body">
                                             <img src="{{ $review->user->photo }}" class="mr-3" alt="" />
                                             <h5 class="mt-2 mb-1">{{ $review->user->name }}</h5>
-                                            <h5 class="mt-2 mb-1">{{ $review->rating }}</h5>
+                                            @if ($review->rating == 1)
+                                            <i class="fa fa-star rating"></i>
+                                            @elseif ($review->rating == 2)
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            @elseif ($review->rating == 3)
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            @elseif ($review->rating == 4)
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            @else
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            <i class="fa fa-star rating"></i>
+                                            @endif
                                             <p> {{ $review->comment }}</p>
                                         </div>
                                     </li>
@@ -141,7 +171,6 @@
                                     <h5>Belum ada ulasan</h5>
                                 @endforelse
                                 {{-- <li class="media my-4">
-
                   <div class="media-body">
                     <h5 class="mt-2 mb-1">Anna Sukkirata</h5>
                     Color is great with the minimalist concept. Even I thought
@@ -170,7 +199,6 @@
         </div>
     </div>
 @endsection
-
 @push('addon-script')
     <script src="/vendor/vue/vue.js"></script>
     <script>

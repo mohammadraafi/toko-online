@@ -12,5 +12,4 @@ class Responses extends Model
 
     protected $fillable = ['users_id', 'kritiks_id', 'responses',];
 
-
 }

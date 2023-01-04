@@ -161,7 +161,11 @@
                             <a href="{{route('kritik-customer.index')}}" class="list-menu">Kritik & Saran</a>
                         </li>
                         <li class="list-space">
+<<<<<<< HEAD
                             <a href="https://wa.me/6282111653484?text=Saya%20ingin%20mengadukan%20keluhan%20" class="list-menu">Komplain</a>
+=======
+                            <a href="{{route("pengaduan.pelanggan.index")}}" class="list-menu">Pengaduan</a>
+>>>>>>> 59110b76027ab16320fc18a84503bfdf265940e2
                         </li>
                     </nav>
                 </div>
