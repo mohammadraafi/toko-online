@@ -57,7 +57,6 @@
                                                 <tr>
                                                     <td colspan="7" class="text-center">Tidak Ada pengaduan & Saran</td>
                                                 </tr>
-                                                </tr>
                                             @endforelse
                                         </tbody>
                                     </table>
@@ -91,7 +90,6 @@
                     ['Belum diproses', {{ $belumDiproses }}],
                     ["Sedang diproses", {{ $sedangDiproses }}],
                     ["Selesai", {{ $selesai }}],
-
                 ]);
                 var options = {
                     width: 800,
