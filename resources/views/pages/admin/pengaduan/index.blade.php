@@ -69,10 +69,10 @@
             </div>
         </div>
 
-        <div class="section-content section-dashboard-home mt-5" data-aos="fade-up">
+        <div class="section-content section-dashboard-home mt-4" data-aos="fade-up">
             <div class="container-fluid">
                 <div class="dashboard-heading">
-                    <h2 class="dashboard-title">Grafik Ulasan Produk</h2>
+                    <h2 class="dashboard-title">Grafik Komplain Produk</h2>
                 </div>
             </div>
         </div>
@@ -105,7 +105,7 @@
                         x: {
                             0: {
                                 side: 'top',
-                                label: 'Grafik Rating Ulasan Produk'
+                                label: 'Grafik Komplain Produk'
                             } // Top x-axis.
                         }
                     },

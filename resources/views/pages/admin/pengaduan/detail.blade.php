@@ -39,10 +39,8 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-
                                     <h5 >Foto</h5>
                                     <h3>Foto</h3>
-
                                     <a href="{{ asset('storage/' . $pengaduan->foto) }}" target="_blank">
                                         <img src="{{ Storage::url($pengaduan->foto) }}" width="200"
                                             height="200" class="rounded-square">
@@ -56,7 +54,6 @@
                         <div class="card mb-3">
                             <div class="card-body">
                                 <div>
-
                                     <h5 >Status Komplain</h5>
                                     <div class="list-group">
                                         @forelse ($tanggapans as $tanggapan)
@@ -93,13 +90,10 @@
             
         <a href="{{route('tanggapan.show', $pengaduan->id)}}"
             class="btn btn-primary btn-lg active mb-5">Berikan Tanggapan</a>
-
-            <a href="{{route('tanggapan.show', $pengaduan->id)}}"
+            <a href="{{route('tanggapan.show', $pengaduan->id)}}"x`
                 class="btn btn-primary btn-lg active mb-5">Berikan Tanggapan</a>
         </div>
-
     </div>
-
     @foreach ($pengaduans as $pengaduan)
         <div class="modal fade" id="tanggapan-{{ $pengaduan->id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
             aria-hidden="true">
@@ -141,11 +135,8 @@
                         <button type="submit" class="btn btn-success">Tanggapi</button>
                     </div>
                 </form>
-
                 </div>
             </div>
         </div>
     @endforeach
-
-
 @endsection

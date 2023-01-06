@@ -109,9 +109,7 @@
                                 </div>
                             </div>
                         @endauth
-
                     </div>
-
                 </div>
             </section>
         </div>
