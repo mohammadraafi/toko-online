@@ -19,9 +19,14 @@ class PengaduanController extends Controller
     public function index()
     {
         $pengaduans = Pengaduan::orderBy('created_at', 'desc')->get();
-
+        $belumDiproses = Pengaduan::where('status', 'Belum diproses')->count();
+        $sedangDiproses = Tanggapan::where('status_pengaduan', 'Sedang diproses')->count();
+        $selesai = Tanggapan::where('status_pengaduan', 'Selesai')->count();
         return view('pages.admin.pengaduan.index', [
-            'pengaduans' => $pengaduans
+            'pengaduans' => $pengaduans,
+            'belumDiproses' => $belumDiproses,
+            'sedangDiproses' => $sedangDiproses,
+            'selesai' => $selesai
         ]);
     }
 
