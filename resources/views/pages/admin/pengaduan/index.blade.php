@@ -6,7 +6,7 @@
     <div class="section-content section-dashboard-home mt-5">
         <div class="container-fluid">
             <div class="dashboard-heading">
-                <h2 class="dashboard-title">Pengaduan</h2>
+                <h2 class="dashboard-title">Komplain</h2>
             </div>
             <div class="dashboard-content">
                 <div class="row">
@@ -46,7 +46,7 @@
                                                     <td>
                                                         <a href="{{ route('pengaduan.show', $pengaduan->id) }}"
                                                             class="btn btn-info btn-sm"><i class="fa fa-eye"
-                                                                style="margin-right: 5px"></i>Lihat Pengaduan</a>
+                                                                style="margin-right: 5px"></i>Lihat Komplain</a>
                                                         @if ($pengaduan->status == 'Belum diproses')
                                                             <a href="{{ route('tanggapan.show', $pengaduan->id) }}"
                                                                 class="btn btn-primary btn-sm active mb-5">Berikan
@@ -55,7 +55,7 @@
                                                     </td>
                                                 @empty
                                                 <tr>
-                                                    <td colspan="7" class="text-center">Tidak Ada pengaduan & Saran</td>
+                                                    <td colspan="7" class="text-center">Tidak Ada Komplain</td>
                                                 </tr>
                                             @endforelse
                                         </tbody>
@@ -68,10 +68,10 @@
             </div>
         </div>
 
-        <div class="section-content section-dashboard-home mt-5" data-aos="fade-up">
+        <div class="section-content section-dashboard-home mt-4" data-aos="fade-up">
             <div class="container-fluid">
                 <div class="dashboard-heading">
-                    <h2 class="dashboard-title">Grafik Ulasan Produk</h2>
+                    <h2 class="dashboard-title">Grafik Komplain Produk</h2>
                 </div>
             </div>
         </div>
@@ -103,7 +103,7 @@
                         x: {
                             0: {
                                 side: 'top',
-                                label: 'Grafik Rating Ulasan Produk'
+                                label: 'Grafik Komplain Produk'
                             } // Top x-axis.
                         }
                     },

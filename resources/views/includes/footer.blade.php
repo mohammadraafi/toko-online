@@ -92,7 +92,7 @@
                 <div class="col-lg-6 col-md-6">
                     <div class="">
                         <div class="list-space">
-                            <img src="http://api.elements.buildwithangga.com/storage/files/2/assets/Header/Header2/Header-2-4.png"
+                            <img src="/images/logos.png" alt="logo" width="75" height="75"
                                 alt="" />
                         </div>
                         {{-- <nav class="list-unstyled">
@@ -141,9 +141,12 @@
                     <h2 class="footer-text-title text-white">Kontak</h2>
                     <nav class="list-unstyled">
                         <li class="list-space">
-                            <a href="" class="list-menu">rafi@gmail.com</a>
-                        </li>
-                        <li class="list-space">
+                            <a href="" class="list-menu">semestacomp@gmail.com</a>
+                         </li> 
+                         <li>
+                            <a href="https://wa.me/6282111653484?text=Saya%20ingin%20mengadukan%20keluhan%20" class="list-menu">No Telepon</a>
+                         </li>
+                        {{-- <li class="list-space">
                             <a href="" class="list-menu">Profile</a>
                         </li>
                         <li class="list-space">
@@ -151,7 +154,7 @@
                         </li>
                         <li class="list-space">
                             <a href="" class="list-menu">Blog</a>
-                        </li>
+                        </li> --}} 
                     </nav>
                 </div>
                 <div class="col-lg-3 col-md-6">
@@ -161,7 +164,9 @@
                             <a href="{{route('kritik-customer.index')}}" class="list-menu">Kritik & Saran</a>
                         </li>
                         <li class="list-space">
-                            <a href="{{route("pengaduan.pelanggan.index")}}" class="list-menu">Pengaduan</a>
+                
+                            <a href="{{route("pengaduan.pelanggan.index")}}" class="list-menu">Komplain</a>
+
                         </li>
                     </nav>
                 </div>
@@ -175,7 +180,7 @@
             <div class="mx-auto d-flex flex-column flex-lg-row align-items-center footer-info-space gap-4">
                 <div class="d-flex title-font font-medium align-items-center gap-4">
                     <a href="">
-                        <svg class="social-media-c social-media-left" width="30" height="30" viewBox="0 0 30 30"
+                        {{-- <svg class="social-media-c social-media-left" width="30" height="30" viewBox="0 0 30 30"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="15" cy="15" r="15" fill="#999999" />
                             <g clip-path="url(#clip0)">
@@ -188,9 +193,9 @@
                                     <rect width="16" height="16" fill="white" transform="translate(7 7)" />
                                 </clipPath>
                             </defs>
-                        </svg>
+                        </svg> --}}
                     </a>
-                    <a href="">
+                    {{-- <a href="">
                         <svg class="social-media-c social-media-center-1" width="30" height="30" viewBox="0 0 30 30"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="15" cy="15" r="15" fill="#999999" />
@@ -205,8 +210,8 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                    </a>
-                    <a href="">
+                    </a> --}}
+                    {{-- <a href="">
                         <svg class="social-media-p social-media-center-2" width="30" height="30" viewBox="0 0 30 30"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
@@ -219,8 +224,8 @@
                                 d="M15 0C6.717 0 0 6.717 0 15C0 23.283 6.717 30 15 30C23.283 30 30 23.283 30 15C30 6.717 23.283 0 15 0ZM23.5613 18.5511C23.5197 19.468 23.3739 20.094 23.161 20.6419C22.7135 21.7989 21.7989 22.7135 20.6419 23.161C20.0942 23.3739 19.468 23.5194 18.5513 23.5613C17.6328 23.6032 17.3394 23.6133 15.0002 23.6133C12.6608 23.6133 12.3676 23.6032 11.4489 23.5613C10.5322 23.5194 9.90601 23.3739 9.35829 23.161C8.78334 22.9447 8.26286 22.6057 7.83257 22.1674C7.39449 21.7374 7.05551 21.2167 6.83922 20.6419C6.62636 20.0942 6.48056 19.468 6.4389 18.5513C6.39656 17.6326 6.38672 17.3392 6.38672 15C6.38672 12.6608 6.39656 12.3674 6.43867 11.4489C6.48033 10.532 6.6259 9.90601 6.83876 9.35806C7.05505 8.78334 7.39426 8.26263 7.83257 7.83257C8.26263 7.39426 8.78334 7.05528 9.35806 6.83899C9.90601 6.62613 10.532 6.48056 11.4489 6.43867C12.3674 6.39679 12.6608 6.38672 15 6.38672C17.3392 6.38672 17.6326 6.39679 18.5511 6.4389C19.468 6.48056 20.094 6.62613 20.6419 6.83876C21.2167 7.05505 21.7374 7.39426 22.1677 7.83257C22.6057 8.26286 22.9449 8.78334 23.161 9.35806C23.3741 9.90601 23.5197 10.532 23.5616 11.4489C23.6034 12.3674 23.6133 12.6608 23.6133 15C23.6133 17.3392 23.6034 17.6326 23.5613 18.5511Z"
                                 fill="#999999" />
                         </svg>
-                    </a>
-                    <a href="">
+                    </a> --}}
+                    {{-- <a href="">
                         <svg class="social-media-c social-media-right" width="30" height="30" viewBox="0 0 30 30"
                             fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="15" cy="15" r="15" fill="#999999" />
@@ -235,19 +240,19 @@
                                 </clipPath>
                             </defs>
                         </svg>
-                    </a>
+                    </a> --}}
                 </div>
                 <nav class="mx-auto d-flex flex-wrap align-items-center justify-content-center gap-4">
-                    <a href="" class="footer-link" style="text-decoration: none">Terms of Service</a>
+                    <a href="" class="footer-link" style="text-decoration: none">Copyright © Semestacomp</a>
+                    <span></span>
+                    {{-- <a href="" class="footer-link" style="text-decoration: none">Privacy Policy</a>
                     <span>|</span>
-                    <a href="" class="footer-link" style="text-decoration: none">Privacy Policy</a>
-                    <span>|</span>
-                    <a href="" class="footer-link" style="text-decoration: none">Licenses</a>
+                    <a href="" class="footer-link" style="text-decoration: none">Licenses</a> --}}
                 </nav>
-                <nav class="d-flex flex-lg-row flex-column align-items-center justify-content-center">
-                    <p style="margin: 0">Copyright © 2021 Analystic Max</p>
-                </nav>
-            </div>
+                {{-- <nav class="d-flex flex-lg-row flex-column align-items-center justify-content-center">
+                    <p style="margin: 0">Copyright © Semestacomp</p>
+                </nav> --}}
+            </div> 
         </div>
     </div>
 </section>

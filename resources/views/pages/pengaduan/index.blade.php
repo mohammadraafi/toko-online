@@ -14,7 +14,7 @@
                                 <ol class="breadcrumb">
                                     <li class="breadcrumb-item"><a href="/">Home</a></li>
                                     <li class="breadcrumb-item active" aria-current="page">
-                                        Pengaduan
+                                        Komplain
                                     </li>
                                 </ol>
                             </nav>
@@ -26,14 +26,14 @@
                 <div class="container">
                     <div class="card">
                         <div class="card-body">
-                            <a href="{{ route('pengaduan.create') }}" class="btn btn-primary mb-3">Berikan Pengaduan</a>
+                            <a href="{{ route('pengaduan.create') }}" class="btn btn-primary mb-3">Berikan Komplain</a>
                             <div>
                                 <table class="table table-hover scroll-horizontal-vertical w-100 table-bordered table-striped"
                                     id="table1">
                                     <thead>
                                         <tr>
                                             <th>Tanggal</th>
-                                            <th>Pengaduan</th>
+                                            <th>Keterangan</th>
                                             <th>Foto</th>
                                             <th>Status</th>
                                             <th>Aksi</th>
@@ -58,12 +58,12 @@
                                                 <td>
                                                     <a href="{{ route('pengaduan.pelanggan.detail', $pengaduan->id) }}"
                                                         class="btn btn-info btn-sm"><i class="fa fa-eye"
-                                                            style="margin-right: 5px"></i>Lihat Pengaduan</a>
+                                                            style="margin-right: 5px"></i>Lihat Komplain</a>
                                                 </td>
                                             </tr>
                                         @empty
                                             <tr>
-                                                <td colspan="7" class="text-center">Tidak Ada Pengaduan</td>
+                                                <td colspan="7" class="text-center">Tidak Ada Komplain</td>
                                             </tr>
                                         @endforelse
                                     </tbody>
