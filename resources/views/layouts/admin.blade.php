@@ -32,6 +32,9 @@
                         class="list-group-item list-group-item-action bg-white {{ request()->is('admin') ? 'active' : '' }}">Laporan
                         Penjualan</a>
 
+                    <a href="{{ route('dashboard-transactions.view-export') }}"
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/export-transaction') ? 'active' : '' }}">Cetak Laporan Transaksi Penjualan</a>
+
                     <a href="{{ route('category.index') }}"
                         class="list-group-item list-group-item-action bg-white {{ request()->is('admin/category') ? 'active' : '' }}">Kelola
                         Data Kategori</a>
@@ -56,9 +59,9 @@
                     </a>
 
                     <a href="{{ route('pengaduan.index') }}"
-                    class="list-group-item list-group-item-action bg-white {{ request()->is('pengaduan') ? 'active' : '' }}">Kelola
-                    Data Komplain
-                </a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('pengaduan') ? 'active' : '' }}">Kelola
+                        Data Komplain
+                    </a>
 
                     <a href="{{ route('kritik.index') }}"
                         class="list-group-item list-group-item-action bg-white {{ request()->is('complaint') ? 'active' : '' }}">Kelola

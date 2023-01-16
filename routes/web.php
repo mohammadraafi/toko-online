@@ -116,6 +116,8 @@ Route::prefix('admin')
         Route::get('/transactions', 'DashboardTransactionController@index')->name('dashboard-transactions');
         Route::get('/transactions/{id}', 'DashboardTransactionController@details')->name('dashboard-transaction-details');
         Route::post('/transactions/{id}', 'DashboardTransactionController@update')->name('dashboard-transaction-update');
+        Route::get('/export-transaction', 'DashboardTransactionController@view_export')->name('dashboard-transactions.view-export');
+        Route::get('/export-transaction-sell', 'DashboardTransactionController@export')->name('dashboard-transaction.export');
 
         // Pengaduan
         Route::get('/pengaduan', 'PengaduanController@index')->name('pengaduan.index');

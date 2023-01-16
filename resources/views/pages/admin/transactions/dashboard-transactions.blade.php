@@ -28,6 +28,7 @@
                                                 <th>Status Pengiriman</th>
                                                 <th>Total Order</th>
                                                 <th>Total Harga</th>
+                                                <th>Tanggal Transaksi</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>
@@ -41,6 +42,7 @@
                                                     <td>{{ $transaction->shipping_status }}</td>
                                                     <td>{{ $transaction->quantity_order }}</td>
                                                     <td>Rp. {{ number_format($transaction->total_price) }}</td>
+                                                    <td>{{ $transaction->created_at}}</td>
                                                     <td>
                                                         <a href="{{ route('dashboard-transaction-details', $transaction->id) }}"
                                                             class="btn btn-info btn-sm"><i class="fa fa-pencil d-inline"

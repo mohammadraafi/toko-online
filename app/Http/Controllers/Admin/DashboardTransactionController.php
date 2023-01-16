@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Transaction;
+use Barryvdh\DomPDF\Facade\Pdf;
 use App\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -53,5 +54,21 @@ class DashboardTransactionController extends Controller
         $item->update($data);
 
         return redirect()->route('dashboard-transaction-details', $id);
+    }
+
+    public function view_export()
+    {
+        return view('pages.admin.transactions.export');
+    }
+
+    public function export(Request $request)
+    {
+        if(isset($_GET['cari'])) {
+            $transactions = Transaction::whereBetween('created_at', [$request->start_date, $request->end_date])->get();
+            // dd($transactions);
+            $pdf = Pdf::loadview('pages.admin.transactions.output-export',compact('transactions'));
+            return $pdf->download('laporan-transaksi-penjualan.pdf');
+
+        }
     }
 }
