@@ -12,6 +12,16 @@ class CategoryController extends Controller
     {
         $categories = Category::all();
         $products = Product::with(['galleries'])->paginate(32);
+        return view('pages.category', [
+            'categories' => $categories,
+            'products' => $products
+        ]);
+    }
+
+    public function all_product()
+    {
+        $categories = Category::all();
+        $products = Product::with(['galleries'])->paginate(32);
         return view('pages.all-product', [
             'categories' => $categories,
             'products' => $products
@@ -23,9 +33,10 @@ class CategoryController extends Controller
         $categories = Category::all();
         $category = Category::where('slug', $slug)->firstOrFail();
         $products = Product::with(['galleries'])->where('categories_id', $category->id)->paginate(32);
-        
-        return view('pages.all-product', [
+
+        return view('pages.detail-category', [
             'categories' => $categories,
+            'category' => $category,
             'products' => $products
         ]);
     }

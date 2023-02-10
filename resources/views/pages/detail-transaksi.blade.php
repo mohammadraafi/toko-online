@@ -108,18 +108,10 @@
                                 <input type="text" name="products_id" value="{{ $data->product->id }}" hidden>
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        {{-- <label>Rating</label>
-                                        <select name="rating" id="" class="form-control">
-                                            <option value="Buruk">Buruk</option>
-                                            <option value="Kurang Baik">Kurang Baik</option>
-                                            <option value="Cukup Baik">Cukup Baik</option>
-                                            <option value="Baik">Baik</option>
-                                            <option value="Sangat Baik">Sangat Baik</option>
-                                        </select> --}}
                                         <div class="rating-css">
                                             <div class="star-icon">
                                                 <input type="radio" value="1" name="rating" checked id="rating1">
-                                                <label for="rating1" class="fa fa-star"></label>
+                                                <label for="rating1" class="fa-solid fa-star"></label>
                                                 <input type="radio" value="2" name="rating" id="rating2">
                                                 <label for="rating2" class="fa fa-star"></label>
                                                 <input type="radio" value="3" name="rating" id="rating3">

@@ -20,9 +20,11 @@ Auth::routes();
 
 //
 Route::get('/', 'HomeController@index')->name('home');
+// Route::get('/', 'HomeController@sidebar')->name('category');
 
 // Kategori
 Route::get('/categories', 'CategoryController@index')->name('categories');
+Route::get('/semua-produk', 'CategoryController@all_product')->name('all-product');
 Route::get('/categories/{id}', 'CategoryController@detail')->name('categories-detail');
 
 // Detail Produk

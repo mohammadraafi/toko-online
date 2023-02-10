@@ -22,6 +22,7 @@
                                                 <th>Keterangan</th>
                                                 <th>Foto</th>
                                                 <th>Status</th>
+                                                <th>Tanggal</th>
                                                 <th>Aksi</th>
                                             </tr>
                                         </thead>

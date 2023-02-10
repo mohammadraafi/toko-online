@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Cart;
 use App\Product;
 use App\Models\Review;
+use App\Transaction;
+use App\TransactionDetail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -14,16 +16,16 @@ class DetailController extends Controller
     public function index(Request $request, $id)
     {
         $product = Product::with(['galleries', 'user'])->where('id', $id)->firstOrFail();
-
+        // $selling = TransactionDetail::where('products_id', $id)->sum('products_id');
         $review = Review::where('products_id', $id)->count();
         $reviews = Review::with(['product', 'user'])->where('products_id', $id)->get();
-
 
 
         return view('pages.detail', [
             'product' => $product,
             'review' => $review,
             'reviews' => $reviews,
+            // 'selling' => $selling
         ]);
     }
 

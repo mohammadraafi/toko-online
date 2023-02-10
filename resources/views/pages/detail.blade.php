@@ -61,7 +61,8 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-4">
-                            <h1>{{ $product->name }}</h1>
+                            <h1 class="mb-3">{{ $product->name }}</h1>
+                            <div class="" style="color: black;">Terjual {{ number_format($product->selling) }}</div>
                         </div>
                         <div class="col-md-4">
                             <div class="price">

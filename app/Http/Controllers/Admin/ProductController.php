@@ -24,6 +24,7 @@ class ProductController extends Controller
     {
 
         $products = Product::with(['category', 'user'])->get();
+        // $selling = TransactionDetail::where('products_id', $id)->sum('products_id');
 
         return view('pages.admin.product.index', [
             'products' => $products

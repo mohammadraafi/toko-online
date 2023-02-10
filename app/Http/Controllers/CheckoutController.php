@@ -150,6 +150,10 @@ class CheckoutController extends Controller
             $product = Product::where('id', $cart->products_id)->first();
             $product->quantity = $product->quantity - $cart->quantity_order;
             $product->update();
+
+            $product = Product::where('id', $cart->products_id)->first();
+            $product->selling = $product->selling + $cart->quantity_order;
+            $product->update();
         }
 
         Cart::where('users_id', Auth::user()->id)->delete();

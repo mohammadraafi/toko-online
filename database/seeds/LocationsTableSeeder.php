@@ -31,7 +31,6 @@ class LocationsTableSeeder extends Seeder
                     'title' => $cityRow['city_name']
                 ]);
             }
-            
         }
     }
 }

@@ -32,6 +32,7 @@
                                     <th scope="col">Nama Produk</th>
                                     <th scope="col">Jumlah</th>
                                     <th scope="col">Harga</th>
+                                    <th scope="col">Berat</th>
                                     <th scope="col">Total Harga</th>
                                     <th scope="col">Menu</th>
                                 </tr>
@@ -76,7 +77,7 @@
                                             <div class="product-title">{{ $cart->quantity_order }}</div>
                                         </td>
 
-                                        <td style="width: 35%;">
+                                        <td style="width: 25%;">
                                             <div class="product-title">
                                                 @if (!empty($cart->product->discount_price))
                                                     Rp.{{ number_format($cart->product->discount_price) }}
@@ -85,6 +86,10 @@
                                                 @endif
                                             </div>
                                             <div class="product-subtitle">Rupiah</div>
+                                        </td>
+                                        <td style="width: 10%;">
+                                            <div class="product-title"> {{$cart->product->weight}}</div>
+                                            <div class="product-subtitle">(gr)</div>
                                         </td>
                                         <td style="width: 35%;">
                                             <div class="product-title">Rp.{{ number_format($cart->total_price) }}</div>

@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('title', 'Product')
-    
+
 @section('content')
 <div class="section-content section-dashboard-home" data-aos="fade-up">
     <div class="container-fluid">
@@ -31,20 +31,22 @@
                                         <th>Nama</th>
                                         <th>Kategori</th>
                                         <th>Harga</th>
+                                        <th>Berat</th>
                                         <th>Aksi</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @forelse ($products as $product)
                                     <tr>
-                                       
+
                                         <td>{{$product->name}}</td>
                                         <td>{{$product->category->name}}</td>
                                         <td>{{$product->price}}</td>
+                                        <td>{{$product->weight}} (gr)</td>
                                         <td>
                                             <div class= "btn-group">
                                                 <div class= "dropdown">
-                                                    <button class="btn btn-primay dropdown-toggle mr-1 mb-1" 
+                                                    <button class="btn btn-primay dropdown-toggle mr-1 mb-1"
                                                         type="button"
                                                         data-toggle="dropdown">
                                                         Aksi
@@ -68,7 +70,7 @@
                                         <tr>
                                             <td colspan="7" class="text-center">Tidak Ada Produk</td>
                                         </tr>
-                                       
+
                                     </tr>
                                     @endforelse
                                 </tbody>
@@ -92,7 +94,7 @@
             ajax: {
                 url: '{!! url()->current() !!}',
                 type: 'GET',
-                
+
             },
             columns: [
                 // {data: 'id', name: 'id'},

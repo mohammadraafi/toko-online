@@ -10,7 +10,7 @@ class Product extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'name', 'users_id', 'categories_id', 'price', 'description', 'slug', 'quantity', 'discount_price', 'weight'
+        'name', 'users_id', 'categories_id', 'price', 'description', 'slug', 'quantity', 'discount_price', 'weight', 'selling'
     ];
 
     protected $hidden = [];
@@ -28,6 +28,14 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class, 'categories_id', 'id');
+    }
+
+    public function transactiondetail()
+    {
+        return $this->belongsTo(TransactionDetail::class, 'products_id', 'id');
+
+        // TransactionDetail::sum('products_id');
+
     }
 
     public function sizes()

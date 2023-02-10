@@ -22,8 +22,7 @@
     <div class="page-dashboard">
         <div class="d-flex" id="wrapper">
             <!-- Sidebar -->
-            <div class="border-right bg-whitec
-        " id="sidebar-wrapper">
+            <div class="border-right bg-whitec " id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
                     <img src="/images/logos.png" alt="" class="my-4" style="max-width: 150px" />
                 </div>
@@ -33,7 +32,8 @@
                         Penjualan</a>
 
                     <a href="{{ route('dashboard-transactions.view-export') }}"
-                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/export-transaction') ? 'active' : '' }}">Cetak Laporan Transaksi Penjualan</a>
+                        class="list-group-item list-group-item-action bg-white {{ request()->is('admin/export-transaction') ? 'active' : '' }}">Cetak
+                        Laporan Transaksi Penjualan</a>
 
                     <a href="{{ route('category.index') }}"
                         class="list-group-item list-group-item-action bg-white {{ request()->is('admin/category') ? 'active' : '' }}">Kelola
@@ -75,10 +75,6 @@
                     <a href="{{ route('alamat-toko.index') }}"
                         class="list-group-item list-group-item-action bg-white {{ request()->is('admin/alamat-toko') ? 'active' : '' }}">Kelola
                         Data Alamat Toko</a>
-                    {{-- <a
-            href="/dashboard-account.html"
-            class="list-group-item list-group-item-action"
-            >Sign Out   </a> --}}
                 </div>
             </div>
             <!-- /#sidebar-wrapper -->

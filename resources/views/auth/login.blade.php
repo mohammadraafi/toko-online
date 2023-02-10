@@ -28,7 +28,7 @@
 
                 @error('username')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong data-test="error">{{ $message }}</strong>
                     </span>
                 @enderror
               </div>
@@ -39,7 +39,7 @@
 
                 @error('password')
                     <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
+                        <strong data-test="error">{{ $message }}</strong>
                     </span>
                 @enderror
               </div>
@@ -47,6 +47,7 @@
               <button
                 class="btn btn-success btn-block w-75 mt-4"
                 type="submit"
+                id="login-button"
               >
                 Login
               </button>

@@ -21,7 +21,7 @@
             <!-- Sidebar -->
             <div class="border-right" id="sidebar-wrapper">
                 <div class="sidebar-heading text-center">
-                    <img src="/images/logos.png" alt="logo" width="100" height="100">  
+                    <img src="/images/logos.png" alt="logo" width="100" height="100">
                 </div>
                 <div class="list-group list-group-flush">
 
@@ -118,6 +118,8 @@
             $("#wrapper").toggleClass("toggled");
         });
     </script>
+        @include('sweetalert::alert')
+
     @stack('addon-script')
 </body>
 

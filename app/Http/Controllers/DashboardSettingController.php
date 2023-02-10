@@ -9,14 +9,15 @@ use App\Models\Province;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class DashboardSettingController extends Controller
 {
     public function store()
-    {   
+    {
         $user = Auth::user();
         $categories = Category::all();
-        
+
         return view('pages.dashboard-settings', [
             'user' => $user,
             'categories' => $categories
@@ -24,7 +25,7 @@ class DashboardSettingController extends Controller
     }
 
     public function account()
-    {   
+    {
         $user = Auth::user();
 
         $province = Province::all();
@@ -48,7 +49,7 @@ class DashboardSettingController extends Controller
     {
         //mengambil data kota/kab
         $city = City::where('province_id',$id)->get();
-        return response()->json($city); 
+        return response()->json($city);
     }
 
     public function update(Request $request, $redirect)
@@ -58,6 +59,7 @@ class DashboardSettingController extends Controller
 
         $item->update($data);
 
+        Alert::success('Berhasil', 'Data berhasil diubah');
         return redirect()->route($redirect);
     }
 

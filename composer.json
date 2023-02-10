@@ -22,6 +22,7 @@
         "midtrans/midtrans-php": "^2.3",
         "realrashid/sweet-alert": "^5.1",
         "sentry/sentry-laravel": "^2.3",
+        "tonysm/turbo-laravel": "^1.9",
         "yajra/laravel-datatables": "^1.5",
         "yajra/laravel-datatables-oracle": "~9.0"
     },

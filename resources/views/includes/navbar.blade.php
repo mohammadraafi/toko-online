@@ -20,7 +20,10 @@
                     <a class="nav-link" href="{{ route('home') }}">Home </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('categories') }}">Semua Produk</a>
+                    <a class="nav-link" href="{{ route('all-product') }}">Semua Produk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('categories') }}">Kategori</a>
                 </li>
                 @auth
                 {{-- <li class="nav-item">

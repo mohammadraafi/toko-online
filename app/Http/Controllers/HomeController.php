@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\TransactionDetail;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -20,7 +21,16 @@ class HomeController extends Controller
 
         return view('pages.home', [
             'categories' => $categories,
-            'products' => $products
+            'products' => $products,
         ]);
     }
+
+    // public function sidebar()
+    // {
+    //     $categories = Category::all();
+
+    //     return view('includes.sidebar', [
+    //         'categories' => $categories
+    //     ]);
+    // }
 }
